@@ -1,4 +1,4 @@
-/* Import after `tailwindcss` and `@datum/tokens/theme.css`. Tells Tailwind to
+/* Import after `tailwindcss` and `@rafaelfachinelli/datum-tokens/theme.css`. Tells Tailwind to
    generate the utilities the Datum components use. */
 @source "./";
 

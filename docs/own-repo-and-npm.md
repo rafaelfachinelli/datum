@@ -1,7 +1,7 @@
 # Datum in its own repository, on npm: specification
 
 Audience: Rafael and AI agents moving Datum out of the portfolio.
-Status: draft · Last updated: 2026-10-23
+Status: steps 1 and 2 done (this repository; installable packages); step 3, the first publish, is next · Last updated: 2026-10-23
 
 Datum moves to a public repository of its own and is published on npm, so anyone can install it; the portfolio becomes a private repository that installs Datum like any other package. Decided with Rafael on 2026-10-23: npm user `rafaelfachinelli`, MIT license with a brand note, history kept.
 

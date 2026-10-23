@@ -3,8 +3,8 @@
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
 import * as React from 'react'
 
-import { focusRing } from './button'
-import { cn } from './lib/cn'
+import { focusRing } from './button.js'
+import { cn } from './lib/cn.js'
 
 /**
  * A set of options where exactly one is chosen. Arrow keys move between the

@@ -1,4 +1,4 @@
-import { Input, Label } from '@datum/ui'
+import { Input, Label } from '@rafaelfachinelli/datum-ui'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {

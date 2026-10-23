@@ -1,4 +1,8 @@
-import { Callout, CalloutContent, CalloutTitle } from '@datum/ui'
+import {
+  Callout,
+  CalloutContent,
+  CalloutTitle,
+} from '@rafaelfachinelli/datum-ui'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import {
   CircleAlert,

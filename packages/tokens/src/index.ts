@@ -1,4 +1,4 @@
-export { contrastRatio, parseHex, relativeLuminance } from './contrast'
+export { contrastRatio, parseHex, relativeLuminance } from './contrast.js'
 export {
   getSeason,
   SEASON_IDS,
@@ -6,7 +6,7 @@ export {
   type SeasonId,
   seasonIdFor,
   seasonInlineScript,
-} from './seasons'
+} from './seasons.js'
 
 /** CSS custom property name of a token path, e.g. `color.board` -> `--datum-color-board`. */
 export function cssVar(path: string): string {

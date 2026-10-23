@@ -1,4 +1,4 @@
-import { Button } from '@datum/ui'
+import { Button } from '@rafaelfachinelli/datum-ui'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { ArrowRight, Download, Plus } from 'lucide-react'
 

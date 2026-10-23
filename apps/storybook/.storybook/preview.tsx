@@ -1,8 +1,12 @@
-import '@datum/tokens/tokens.css'
+import '@rafaelfachinelli/datum-tokens/tokens.css'
 import '../src/styles/components.css'
 import '../src/styles/datum-docs.css'
 
-import { getSeason, SEASON_IDS, SEASON_NAMES } from '@datum/tokens'
+import {
+  getSeason,
+  SEASON_IDS,
+  SEASON_NAMES,
+} from '@rafaelfachinelli/datum-tokens'
 import type { Decorator, Preview } from '@storybook/react-vite'
 
 import { datumTheme } from './theme'

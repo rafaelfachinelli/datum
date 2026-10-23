@@ -1,4 +1,4 @@
-import { Card, CardContent, Stat } from '@datum/ui'
+import { Card, CardContent, Stat } from '@rafaelfachinelli/datum-ui'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Briefcase, Network, ShieldCheck, Users } from 'lucide-react'
 

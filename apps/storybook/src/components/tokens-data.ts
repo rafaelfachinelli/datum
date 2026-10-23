@@ -1,4 +1,4 @@
-import tokens from '@datum/tokens/tokens.json'
+import tokens from '@rafaelfachinelli/datum-tokens/tokens.json'
 
 export interface TokenEntry {
   type: string

@@ -3,9 +3,9 @@
 import * as SelectPrimitive from '@radix-ui/react-select'
 import * as React from 'react'
 
-import { useFieldControl } from './field'
-import { controlClass } from './input'
-import { cn } from './lib/cn'
+import { useFieldControl } from './field.js'
+import { controlClass } from './input.js'
+import { cn } from './lib/cn.js'
 
 function Chevron({ up = false }: { up?: boolean }) {
   return (

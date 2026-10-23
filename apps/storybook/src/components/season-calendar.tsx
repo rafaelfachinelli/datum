@@ -4,7 +4,7 @@ import {
   SEASON_NAMES,
   type SeasonId,
   seasonIdFor,
-} from '@datum/tokens'
+} from '@rafaelfachinelli/datum-tokens'
 
 import { seasonTokens } from './tokens-data'
 

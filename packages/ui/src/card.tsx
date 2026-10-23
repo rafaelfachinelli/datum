@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot'
 import * as React from 'react'
 
-import { cn } from './lib/cn'
+import { cn } from './lib/cn.js'
 
 /** A surface that groups related content. Compose it with the parts below. */
 export function Card({ className, ...props }: React.ComponentProps<'div'>) {

@@ -2,8 +2,8 @@
 
 import * as React from 'react'
 
-import { useFieldControl } from './field'
-import { cn } from './lib/cn'
+import { useFieldControl } from './field.js'
+import { cn } from './lib/cn.js'
 
 /** Border, focus, invalid and disabled styles shared by every text control. */
 export const controlClass = [

@@ -1,5 +1,5 @@
 /* Styles for the Datum documentation blocks. Values come only from the
-   @datum/tokens variables, so the pages follow the season like the site. */
+   @rafaelfachinelli/datum-tokens variables, so the pages follow the season like the site. */
 
 .datum-docs {
   font-family: var(--datum-font-text);

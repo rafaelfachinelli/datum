@@ -17,3 +17,5 @@ jobs:
       - run: npm ci
       - run: npm run format:check
       - run: npx turbo run typecheck test build
+      # Installs the packed packages into a new Vite app: catches a broken exports map before npm does.
+      - run: npm run smoke

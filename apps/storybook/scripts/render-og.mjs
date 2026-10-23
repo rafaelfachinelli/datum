@@ -1,5 +1,5 @@
 // Renders the Storybook sharing card: og/og.html -> public/og.png (1200x630).
-// Usage: npm run og -w @datum/storybook   (CHROME=<path> to pick the browser)
+// Usage: npm run og -w datum-storybook   (CHROME=<path> to pick the browser)
 // Talks to headless Chrome over the DevTools protocol, so the image has the
 // exact size (a plain --screenshot counts the window frame in the height).
 import { spawn } from 'node:child_process'
