@@ -1,4 +1,4 @@
-import { contrastRatio, cssVar } from '@datum/tokens'
+import { contrastRatio, cssVar } from '@rafaelfachinelli/datum-tokens'
 
 import { baseTokens, tokensUnder } from './tokens-data'
 

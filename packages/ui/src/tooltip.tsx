@@ -3,7 +3,7 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip'
 import * as React from 'react'
 
-import { cn } from './lib/cn'
+import { cn } from './lib/cn.js'
 
 /**
  * Shares the open delay between tooltips. Optional: each Tooltip brings its

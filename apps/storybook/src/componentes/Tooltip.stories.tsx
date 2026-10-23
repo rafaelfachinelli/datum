@@ -4,7 +4,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@datum/ui'
+} from '@rafaelfachinelli/datum-ui'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Github, Linkedin, Mail, Share2 } from 'lucide-react'
 

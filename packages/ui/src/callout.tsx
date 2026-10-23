@@ -2,7 +2,7 @@ import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
-import { cn } from './lib/cn'
+import { cn } from './lib/cn.js'
 
 export const calloutVariants = cva(
   'grid items-start gap-x-3 gap-y-1 rounded-[var(--datum-radius-md)] border-l-4 px-4 py-3 text-sm text-ink',

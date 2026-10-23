@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
   Textarea,
-} from '@datum/ui'
+} from '@rafaelfachinelli/datum-ui'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Send } from 'lucide-react'
 import { type FormEvent, useState } from 'react'

@@ -2,8 +2,8 @@ import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
-import { focusRing } from './button'
-import { cn } from './lib/cn'
+import { focusRing } from './button.js'
+import { cn } from './lib/cn.js'
 
 export const badgeVariants = cva(
   [

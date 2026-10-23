@@ -2,8 +2,8 @@
 
 import * as React from 'react'
 
-import { Label } from './label'
-import { cn } from './lib/cn'
+import { Label } from './label.js'
+import { cn } from './lib/cn.js'
 
 type FieldContextValue = {
   id: string

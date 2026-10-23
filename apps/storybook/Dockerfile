@@ -12,7 +12,7 @@ RUN npm ci
 
 COPY . .
 
-RUN npx turbo run build --filter=@datum/storybook
+RUN npx turbo run build --filter=datum-storybook
 
 FROM nginx:1.27-alpine AS production
 

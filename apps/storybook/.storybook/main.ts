@@ -16,7 +16,7 @@ const config: StorybookConfig = {
     // Accessibility checks (axe) on every story, in the "Accessibility" panel.
     '@storybook/addon-a11y',
   ],
-  // Tailwind 4 generates the classes of the components (@datum/ui).
+  // Tailwind 4 generates the classes of the components (@rafaelfachinelli/datum-ui).
   viteFinal: config => ({
     ...config,
     plugins: [...(config.plugins ?? []), tailwindcss()],

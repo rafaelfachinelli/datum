@@ -1,8 +1,8 @@
-/* Tailwind with the Datum theme, for the components (`@datum/ui`) shown in
+/* Tailwind with the Datum theme, for the components (`@rafaelfachinelli/datum-ui`) shown in
    the stories. Same setup a consumer app uses. */
 @import 'tailwindcss';
-@import '@datum/tokens/theme.css';
-@import '@datum/ui/styles.css';
+@import '@rafaelfachinelli/datum-tokens/theme.css';
+@import '@rafaelfachinelli/datum-ui/styles.css';
 
 @theme inline {
   --font-sans: var(--datum-font-text);
