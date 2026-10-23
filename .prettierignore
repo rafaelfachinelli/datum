@@ -6,3 +6,5 @@ storybook-static
 package-lock.json
 # Token sources keep one token per line, easier to read than Prettier output.
 packages/tokens/src/tokens
+# Generated from rafaelfachinelli/readmes.
+README.md
