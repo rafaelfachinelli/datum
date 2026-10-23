@@ -10,13 +10,13 @@ The reference is the mindset (not the products) of designing a device down to th
 
 ## Attributes
 
-| Attribute | What it means on the site |
-| --- | --- |
-| Reliable | Facts only, numbers marked as estimates, nothing that breaks or lags |
-| Responsible | Clear ownership of decisions, accessible by default, fast on any phone |
-| Technical | Real architecture, real code, real trade-offs; no buzzword filler |
+| Attribute       | What it means on the site                                                   |
+| --------------- | --------------------------------------------------------------------------- |
+| Reliable        | Facts only, numbers marked as estimates, nothing that breaks or lags        |
+| Responsible     | Clear ownership of decisions, accessible by default, fast on any phone      |
+| Technical       | Real architecture, real code, real trade-offs; no buzzword filler           |
 | Detail-oriented | Alignment, spacing and states are deliberate; the small things are finished |
-| Communicator | Explains what was built and why, in a direct and informal voice |
+| Communicator    | Explains what was built and why, in a direct and informal voice             |
 
 ## Voice
 
@@ -37,15 +37,15 @@ The reference is the mindset (not the products) of designing a device down to th
 - A season changes accent colors, the logo colors and small decorative touches. It never changes layout, contrast rules or readability.
 - Calendar (approved 2026-10-17); outside these windows the base theme applies:
 
-| Season | Window |
-| --- | --- |
-| Ano Novo | 26 Dec to 6 Jan |
-| Carnaval | Friday before Carnival to Ash Wednesday (Easter - 51 to Easter - 46) |
-| Páscoa | Palm Sunday to Easter Sunday (Easter - 7 to Easter) |
-| Festa Junina | 1 to 30 Jun |
-| Dia do Programador | Day 256 of the year (13 Sep, 12 Sep in leap years) |
-| Halloween | 24 to 31 Oct |
-| Natal | 1 to 25 Dec |
+| Season             | Window                                                               |
+| ------------------ | -------------------------------------------------------------------- |
+| Ano Novo           | 26 Dec to 6 Jan                                                      |
+| Carnaval           | Friday before Carnival to Ash Wednesday (Easter - 51 to Easter - 46) |
+| Páscoa             | Palm Sunday to Easter Sunday (Easter - 7 to Easter)                  |
+| Festa Junina       | 1 to 30 Jun                                                          |
+| Dia do Programador | Day 256 of the year (13 Sep, 12 Sep in leap years)                   |
+| Halloween          | 24 to 31 Oct                                                         |
+| Natal              | 1 to 25 Dec                                                          |
 
 Moving dates come from the Gregorian Easter computation (anonymous algorithm, Meeus/Jones/Butcher).
 

@@ -3,16 +3,42 @@ import { cssVar } from '@datum/tokens'
 import { baseTokens, dimension, tokensUnder } from './tokens-data'
 
 const typeSamples = [
-  { token: 'font.display', label: 'Display · Archivo 800', style: { fontSize: 44, fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1 } },
-  { token: 'font.display', label: 'Título · Archivo 700', style: { fontSize: 24, fontWeight: 700, letterSpacing: '-0.01em' } },
-  { token: 'font.text', label: 'Texto · IBM Plex Sans 400', style: { fontSize: 16, fontWeight: 400 } },
-  { token: 'font.mono', label: 'Anotação · IBM Plex Mono 500', style: { fontSize: 13, fontWeight: 500, color: 'var(--datum-color-drafting)' } },
+  {
+    token: 'font.display',
+    label: 'Display · Archivo 800',
+    style: {
+      fontSize: 44,
+      fontWeight: 800,
+      letterSpacing: '-0.02em',
+      lineHeight: 1,
+    },
+  },
+  {
+    token: 'font.display',
+    label: 'Título · Archivo 700',
+    style: { fontSize: 24, fontWeight: 700, letterSpacing: '-0.01em' },
+  },
+  {
+    token: 'font.text',
+    label: 'Texto · IBM Plex Sans 400',
+    style: { fontSize: 16, fontWeight: 400 },
+  },
+  {
+    token: 'font.mono',
+    label: 'Anotação · IBM Plex Mono 500',
+    style: {
+      fontSize: 13,
+      fontWeight: 500,
+      color: 'var(--datum-color-drafting)',
+    },
+  },
 ]
 
 const sampleText: Record<string, string> = {
   'Display · Archivo 800': 'Datum',
   'Título · Archivo 700': 'Pirâmide de testes na prática',
-  'Texto · IBM Plex Sans 400': 'Cuidado com o que ninguém vê. Código que continua legível depois de cinco ou dez anos.',
+  'Texto · IBM Plex Sans 400':
+    'Cuidado com o que ninguém vê. Código que continua legível depois de cinco ou dez anos.',
   'Anotação · IBM Plex Mono 500': 'h 40 · px 16 · r 2 · R$ 12.000,00',
 }
 
@@ -22,7 +48,14 @@ export function TypeSpecimen() {
       {typeSamples.map(sample => (
         <div key={sample.label} className="datum-type-row">
           <span className="datum-label">{sample.label}</span>
-          <span style={{ fontFamily: `var(${cssVar(sample.token)})`, ...sample.style }}>{sampleText[sample.label]}</span>
+          <span
+            style={{
+              fontFamily: `var(${cssVar(sample.token)})`,
+              ...sample.style,
+            }}
+          >
+            {sampleText[sample.label]}
+          </span>
         </div>
       ))}
       <div className="datum-type-row">
@@ -40,7 +73,9 @@ export function TypeSpecimen() {
 }
 
 /** Spacing, radius and grid tokens drawn as dimension marks. */
-export function ScaleSpecimen({ prefix }: Readonly<{ prefix: 'space.' | 'radius.' | 'grid.' }>) {
+export function ScaleSpecimen({
+  prefix,
+}: Readonly<{ prefix: 'space.' | 'radius.' | 'grid.' }>) {
   return (
     <div className="datum-docs">
       {tokensUnder(prefix).map(([path, token]) => {

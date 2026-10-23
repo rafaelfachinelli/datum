@@ -1,7 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
 import { resolveTokens, seasonContexts } from '../src/resolve'
-import { getSeason, SEASON_IDS, seasonIdFor, seasonInlineScript } from '../src/seasons'
+import {
+  getSeason,
+  SEASON_IDS,
+  seasonIdFor,
+  seasonInlineScript,
+} from '../src/seasons'
 
 const cases: [string, string][] = [
   // Default and Halloween
@@ -60,7 +65,9 @@ describe('seasonInlineScript', () => {
   it('sets a known season on the document element', () => {
     const attributes: Record<string, string> = {}
     const fakeDocument = {
-      documentElement: { setAttribute: (key: string, value: string) => (attributes[key] = value) },
+      documentElement: {
+        setAttribute: (key: string, value: string) => (attributes[key] = value),
+      },
     }
     new Function('document', seasonInlineScript)(fakeDocument)
     expect(SEASON_IDS).toContain(attributes['data-season'])
@@ -78,7 +85,12 @@ describe('season tokens', () => {
         .filter(t => t.path.startsWith('season.'))
         .map(t => t.path)
         .sort()
-      expect(paths).toEqual(['season.a', 'season.accent', 'season.b', 'season.on-accent'])
+      expect(paths).toEqual([
+        'season.a',
+        'season.accent',
+        'season.b',
+        'season.on-accent',
+      ])
     })
   }
 })

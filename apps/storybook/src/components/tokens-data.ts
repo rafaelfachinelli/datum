@@ -7,7 +7,10 @@ export interface TokenEntry {
 }
 
 export const baseTokens = tokens.base as Record<string, TokenEntry>
-export const seasonTokens = tokens.seasons as Record<string, Record<string, string>>
+export const seasonTokens = tokens.seasons as Record<
+  string,
+  Record<string, string>
+>
 
 /** Base tokens under a path prefix, e.g. `color.` or `space.`. */
 export function tokensUnder(prefix: string): [string, TokenEntry][] {
@@ -15,7 +18,12 @@ export function tokensUnder(prefix: string): [string, TokenEntry][] {
 }
 
 export function dimension(value: unknown): string {
-  if (value && typeof value === 'object' && 'value' in value && 'unit' in value) {
+  if (
+    value &&
+    typeof value === 'object' &&
+    'value' in value &&
+    'unit' in value
+  ) {
     const v = value as { value: number; unit: string }
     return `${v.value}${v.unit}`
   }

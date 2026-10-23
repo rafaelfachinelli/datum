@@ -11,13 +11,19 @@ export const SEASON_IDS = [
 
 export type SeasonId = (typeof SEASON_IDS)[number]
 
-export const SEASON_NAMES: Record<SeasonId, { 'pt-BR': string; 'en-US': string }> = {
+export const SEASON_NAMES: Record<
+  SeasonId,
+  { 'pt-BR': string; 'en-US': string }
+> = {
   base: { 'pt-BR': 'Padrão', 'en-US': 'Default' },
   'ano-novo': { 'pt-BR': 'Ano Novo', 'en-US': 'New Year' },
   carnaval: { 'pt-BR': 'Carnaval', 'en-US': 'Carnival' },
   pascoa: { 'pt-BR': 'Páscoa', 'en-US': 'Easter' },
   'festa-junina': { 'pt-BR': 'Festa Junina', 'en-US': 'June Festival' },
-  'dia-do-programador': { 'pt-BR': 'Dia do Programador', 'en-US': "Programmer's Day" },
+  'dia-do-programador': {
+    'pt-BR': 'Dia do Programador',
+    'en-US': "Programmer's Day",
+  },
   halloween: { 'pt-BR': 'Halloween', 'en-US': 'Halloween' },
   natal: { 'pt-BR': 'Natal', 'en-US': 'Christmas' },
 }
@@ -27,7 +33,11 @@ export const SEASON_NAMES: Record<SeasonId, { 'pt-BR': string; 'en-US': string }
  * source is also inlined in the page <head> (see `seasonInlineScript`), so it
  * must not reference anything outside its own body.
  */
-export function seasonIdFor(year: number, month: number, day: number): SeasonId {
+export function seasonIdFor(
+  year: number,
+  month: number,
+  day: number,
+): SeasonId {
   // Day of the year (1-366) for a date of `year`.
   function dayOfYear(m: number, d: number): number {
     const leap = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
@@ -55,7 +65,8 @@ export function seasonIdFor(year: number, month: number, day: number): SeasonId 
 
   const today = dayOfYear(month, day)
 
-  if ((month === 12 && day >= 26) || (month === 1 && day <= 6)) return 'ano-novo'
+  if ((month === 12 && day >= 26) || (month === 1 && day <= 6))
+    return 'ano-novo'
   if (today >= easter - 51 && today <= easter - 46) return 'carnaval'
   if (today >= easter - 7 && today <= easter) return 'pascoa'
   if (month === 6) return 'festa-junina'

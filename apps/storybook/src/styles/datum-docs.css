@@ -18,8 +18,10 @@
   border: 1px solid var(--datum-color-line-strong);
   border-radius: var(--datum-radius-sm);
   background:
-    linear-gradient(var(--datum-color-grid) 1px, transparent 1px) 0 0 / var(--datum-grid-minor) var(--datum-grid-minor),
-    linear-gradient(90deg, var(--datum-color-grid) 1px, transparent 1px) 0 0 / var(--datum-grid-minor) var(--datum-grid-minor),
+    linear-gradient(var(--datum-color-grid) 1px, transparent 1px) 0 0 /
+      var(--datum-grid-minor) var(--datum-grid-minor),
+    linear-gradient(90deg, var(--datum-color-grid) 1px, transparent 1px) 0 0 /
+      var(--datum-grid-minor) var(--datum-grid-minor),
     var(--datum-color-board);
   padding: var(--datum-space-6);
   position: relative;
@@ -140,7 +142,11 @@
   display: inline-block;
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, var(--datum-season-a), var(--datum-season-b));
+  background: linear-gradient(
+    135deg,
+    var(--datum-season-a),
+    var(--datum-season-b)
+  );
   -webkit-mask: url('/logo-mask.png') center / contain no-repeat;
   mask: url('/logo-mask.png') center / contain no-repeat;
 }

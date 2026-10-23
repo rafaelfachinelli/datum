@@ -1,5 +1,10 @@
 /** Parses #rgb, #rrggbb or #rrggbbaa into 0-255 channels (alpha 0-1). */
-export function parseHex(hex: string): { r: number; g: number; b: number; a: number } {
+export function parseHex(hex: string): {
+  r: number
+  g: number
+  b: number
+  a: number
+} {
   const clean = hex.replace('#', '')
   const full =
     clean.length === 3
@@ -8,7 +13,8 @@ export function parseHex(hex: string): { r: number; g: number; b: number; a: num
           .map(c => c + c)
           .join('')
       : clean
-  if (!/^[0-9a-f]{6}([0-9a-f]{2})?$/i.test(full)) throw new Error(`Invalid hex color: ${hex}`)
+  if (!/^[0-9a-f]{6}([0-9a-f]{2})?$/i.test(full))
+    throw new Error(`Invalid hex color: ${hex}`)
   return {
     r: parseInt(full.slice(0, 2), 16),
     g: parseInt(full.slice(2, 4), 16),

@@ -28,7 +28,9 @@ describe('base theme contrast (WCAG AA, 4.5:1 for text)', () => {
   for (const background of backgrounds) {
     for (const text of texts) {
       it(`${text} on ${background}`, () => {
-        expect(contrastRatio(valueOf(tokens, text), valueOf(tokens, background))).toBeGreaterThanOrEqual(AA_TEXT)
+        expect(
+          contrastRatio(valueOf(tokens, text), valueOf(tokens, background)),
+        ).toBeGreaterThanOrEqual(AA_TEXT)
       })
     }
   }
@@ -40,12 +42,22 @@ describe('season contrast', () => {
 
     it(`${season}: accent as text on board and surface`, () => {
       for (const background of ['color.board', 'color.surface']) {
-        expect(contrastRatio(valueOf(tokens, 'season.accent'), valueOf(tokens, background))).toBeGreaterThanOrEqual(AA_TEXT)
+        expect(
+          contrastRatio(
+            valueOf(tokens, 'season.accent'),
+            valueOf(tokens, background),
+          ),
+        ).toBeGreaterThanOrEqual(AA_TEXT)
       }
     })
 
     it(`${season}: text on the accent`, () => {
-      expect(contrastRatio(valueOf(tokens, 'season.on-accent'), valueOf(tokens, 'season.accent'))).toBeGreaterThanOrEqual(AA_TEXT)
+      expect(
+        contrastRatio(
+          valueOf(tokens, 'season.on-accent'),
+          valueOf(tokens, 'season.accent'),
+        ),
+      ).toBeGreaterThanOrEqual(AA_TEXT)
     })
   }
 })

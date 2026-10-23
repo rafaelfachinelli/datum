@@ -1,4 +1,10 @@
-import { getSeason, SEASON_IDS, SEASON_NAMES, type SeasonId, seasonIdFor } from '@datum/tokens'
+import {
+  getSeason,
+  SEASON_IDS,
+  SEASON_NAMES,
+  type SeasonId,
+  seasonIdFor,
+} from '@datum/tokens'
 
 import { seasonTokens } from './tokens-data'
 
@@ -13,16 +19,25 @@ const WINDOWS: Record<SeasonId, string> = {
   natal: '1 a 25 dez',
 }
 
-const dateFormat = new Intl.DateTimeFormat('pt-BR', { day: 'numeric', month: 'short', year: 'numeric' })
+const dateFormat = new Intl.DateTimeFormat('pt-BR', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+})
 
 /** Next [start, end] window of a season, found by walking the calendar with seasonIdFor. */
 function nextWindow(id: SeasonId, from: Date): [Date, Date] | null {
   const day = new Date(from.getFullYear(), from.getMonth(), from.getDate())
   let start: Date | null = null
   for (let i = 0; i < 800; i++) {
-    const current = seasonIdFor(day.getFullYear(), day.getMonth() + 1, day.getDate())
+    const current = seasonIdFor(
+      day.getFullYear(),
+      day.getMonth() + 1,
+      day.getDate(),
+    )
     if (current === id && !start) start = new Date(day)
-    if (current !== id && start) return [start, new Date(day.getTime() - 86400000)]
+    if (current !== id && start)
+      return [start, new Date(day.getTime() - 86400000)]
     day.setDate(day.getDate() + 1)
   }
   return null
@@ -40,7 +55,11 @@ function SeasonLogo({ id }: Readonly<{ id: SeasonId }>) {
   return (
     <span
       className="datum-logo"
-      style={{ width: 32, height: 32, background: `linear-gradient(135deg, ${t['season.a']}, ${t['season.b']})` }}
+      style={{
+        width: 32,
+        height: 32,
+        background: `linear-gradient(135deg, ${t['season.a']}, ${t['season.b']})`,
+      }}
     />
   )
 }
@@ -77,11 +96,24 @@ export function SeasonCalendar() {
                 </td>
                 <td>{WINDOWS[id]}</td>
                 <td className="mono">
-                  <span style={{ display: 'inline-block', width: 12, height: 12, background: accent, marginRight: 8, verticalAlign: 'middle' }} />
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      width: 12,
+                      height: 12,
+                      background: accent,
+                      marginRight: 8,
+                      verticalAlign: 'middle',
+                    }}
+                  />
                   {accent}
                 </td>
                 <td className="mono">{formatWindow(window)}</td>
-                <td>{id === current && <span className="datum-pill-now">hoje</span>}</td>
+                <td>
+                  {id === current && (
+                    <span className="datum-pill-now">hoje</span>
+                  )}
+                </td>
               </tr>
             )
           })}
@@ -94,13 +126,31 @@ export function SeasonCalendar() {
 /** Logo and accent of the season currently selected in the toolbar. */
 export function SeasonPreview() {
   return (
-    <div className="datum-sheet datum-ticked" style={{ display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap' }}>
+    <div
+      className="datum-sheet datum-ticked"
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 24,
+        flexWrap: 'wrap',
+      }}
+    >
       <span className="datum-logo" style={{ width: 56, height: 56 }} />
       <div style={{ display: 'grid', gap: 8 }}>
-        <span className="datum-label" style={{ color: 'var(--datum-season-accent)' }}>
+        <span
+          className="datum-label"
+          style={{ color: 'var(--datum-season-accent)' }}
+        >
           Tech Lead &amp; Engenheiro de Software
         </span>
-        <span style={{ fontFamily: 'var(--datum-font-display)', fontWeight: 800, fontSize: 28, letterSpacing: '-0.02em' }}>
+        <span
+          style={{
+            fontFamily: 'var(--datum-font-display)',
+            fontWeight: 800,
+            fontSize: 28,
+            letterSpacing: '-0.02em',
+          }}
+        >
           A temporada muda o logo e o destaque.
         </span>
         <span>

@@ -17,12 +17,12 @@ Datum moves to a public repository of its own and is published on npm, so anyone
 
 ## Target
 
-| | Repository | Package |
-| --- | --- | --- |
-| Tokens | `rafaelfachinelli/datum` (public), `packages/tokens` | `@rafaelfachinelli/datum-tokens` |
-| Components | `rafaelfachinelli/datum`, `packages/ui` | `@rafaelfachinelli/datum-ui` |
-| Storybook | `rafaelfachinelli/datum`, `apps/storybook` | not published; design.rafaelfachinelli.com |
-| Site | `rafaelfachinelli/portfolio` (private) | installs both from npm |
+|            | Repository                                           | Package                                    |
+| ---------- | ---------------------------------------------------- | ------------------------------------------ |
+| Tokens     | `rafaelfachinelli/datum` (public), `packages/tokens` | `@rafaelfachinelli/datum-tokens`           |
+| Components | `rafaelfachinelli/datum`, `packages/ui`              | `@rafaelfachinelli/datum-ui`               |
+| Storybook  | `rafaelfachinelli/datum`, `apps/storybook`           | not published; design.rafaelfachinelli.com |
+| Site       | `rafaelfachinelli/portfolio` (private)               | installs both from npm                     |
 
 ## Steps
 

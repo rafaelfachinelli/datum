@@ -11,11 +11,11 @@ Datum is the design system of Rafael Fachinelli, in the **Blueprint** visual dir
 
 ## Packages
 
-| Workspace | Name | Role |
-| --- | --- | --- |
-| `packages/tokens` | `@datum/tokens` | W3C DTCG tokens; builds `dist/tokens.css` (CSS variables), `dist/theme.css` (Tailwind 4 theme) and `dist/tokens.json`; exports `getSeason`, `seasonIdFor`, `seasonInlineScript`, `contrastRatio`, `cssVar` |
-| `apps/storybook` | `@datum/storybook` | Storybook 10 (react-vite); docs pages in pt-BR; static site served by nginx |
-| `packages/ui` | `@datum/ui` | React components (primitives and general patterns) styled with Tailwind 4 on the token theme; shadcn/ui and Radix as the base |
+| Workspace         | Name               | Role                                                                                                                                                                                                       |
+| ----------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `packages/tokens` | `@datum/tokens`    | W3C DTCG tokens; builds `dist/tokens.css` (CSS variables), `dist/theme.css` (Tailwind 4 theme) and `dist/tokens.json`; exports `getSeason`, `seasonIdFor`, `seasonInlineScript`, `contrastRatio`, `cssVar` |
+| `apps/storybook`  | `@datum/storybook` | Storybook 10 (react-vite); docs pages in pt-BR; static site served by nginx                                                                                                                                |
+| `packages/ui`     | `@datum/ui`        | React components (primitives and general patterns) styled with Tailwind 4 on the token theme; shadcn/ui and Radix as the base                                                                              |
 
 Packages are workspace-only (not published to npm). The site consumes them through npm workspaces (`"*"`).
 
