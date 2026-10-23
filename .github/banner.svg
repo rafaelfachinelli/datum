@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="128" viewBox="0 0 600 128" role="img" aria-label="Datum">
+  <title>Datum</title>
+  <!-- The datum feature symbol: a reference letter in a box, a leader and a filled triangle on the datum line. -->
+  <g fill="none" stroke="#3498db" stroke-width="3">
+    <rect x="158" y="18" width="40" height="26" />
+    <path d="M178 44V62" />
+    <path d="M150 104H206" />
+  </g>
+  <text x="178" y="37" text-anchor="middle" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="700" fill="#3498db">A</text>
+  <path d="M178 104 L158 62 L198 62 Z" fill="#3498db" />
+  <text x="226" y="66" dominant-baseline="central" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="56" font-weight="800" letter-spacing="-1" fill="#3498db">Datum</text>
+</svg>
