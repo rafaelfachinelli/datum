@@ -1,11 +1,11 @@
 ---
 name: datum-release
-description: Use when a change touches the Datum design system (packages/tokens, packages/ui, or a component or foundations page in apps/datum). Picks the version bump, updates both Datum package versions and writes the entry on the Storybook Novidades page, in the same PR as the change.
+description: Use when a change touches the Datum design system (packages/tokens, packages/ui, or a component or foundations page in apps/storybook). Picks the version bump, updates both Datum package versions and writes the entry on the Storybook Novidades page, in the same PR as the change.
 ---
 
 # Datum release notes
 
-Datum has **one version** for `@datum/tokens` and `@datum/ui`: they always move together. The changelog is written by hand on the Storybook page **Datum / Novidades** (`apps/datum/src/Novidades.mdx`), newest first, in pt-BR. Rules of the design system: `docs/datum/README.md`.
+Datum has **one version** for `@datum/tokens` and `@datum/ui`: they always move together. The changelog is written by hand on the Storybook page **Datum / Novidades** (`apps/storybook/src/Novidades.mdx`), newest first, in pt-BR. Rules of the design system: `docs/README.md`.
 
 ## When it applies
 
@@ -13,9 +13,9 @@ Any PR that changes what someone using Datum sees or gets:
 
 - `packages/tokens/src/**` (a token, a season, the season logic, the build output);
 - `packages/ui/src/**` (a component, a prop, a variant, a style, a fix);
-- a component or foundations page in `apps/datum/src/**` when the change fixes or adds something a reader relies on (a broken story, a wrong example).
+- a component or foundations page in `apps/storybook/src/**` when the change fixes or adds something a reader relies on (a broken story, a wrong example).
 
-It does not apply to typos in the docs, Storybook chrome or tooling with no visible effect, or `apps/site` alone.
+It does not apply to typos in the docs, or Storybook chrome and tooling with no visible effect.
 
 ## 1. Pick the bump
 
@@ -35,16 +35,16 @@ Same version in three places:
 - `packages/ui/package.json`;
 - the `packages/tokens` and `packages/ui` entries in the root `package-lock.json` (edit the `"version"` line by hand; do not run `npm install` just for this).
 
-Also update the status line of `docs/datum/README.md` (`Status: version X.Y.Z (N components) ...`).
+Also update the status line of `docs/README.md` (`Status: version X.Y.Z (N components) ...`).
 
 ## 3. Write the entry
 
-At the top of `apps/datum/src/Novidades.mdx`, below the version table:
+At the top of `apps/storybook/src/Novidades.mdx`, below the version table:
 
 ```mdx
 ## 0.4.0 · 22 de outubro de 2026
 
-- **Componente:** o que mudou, em uma ou duas frases, para quem usa: o que passa a acontecer e, num conserto, o que acontecia antes. ([#NN](https://github.com/rafaelfachinelli/portfolio/pull/NN))
+- **Componente:** o que mudou, em uma ou duas frases, para quem usa: o que passa a acontecer e, num conserto, o que acontecia antes. ([#NN](https://github.com/rafaelfachinelli/datum/pull/NN))
 ```
 
 - Date in pt-BR, written out ("22 de outubro de 2026"), the day the PR merges.
