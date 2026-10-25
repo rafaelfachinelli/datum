@@ -4,13 +4,20 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 # Novidades
 
-O que mudou em cada versão do Datum, da mais nova para a mais antiga. Os pacotes `@datum/tokens` e `@datum/ui` andam juntos, com uma versão só.
+O que mudou em cada versão do Datum, da mais nova para a mais antiga. Os pacotes `@rafaelfachinelli/datum-tokens` e `@rafaelfachinelli/datum-ui` andam juntos, com uma versão só. Até a 0.3.1 eles se chamavam `@datum/tokens` e `@datum/ui` e só existiam dentro do repositório do portfólio.
 
 | Mudança                                                   | Versão |
 | --------------------------------------------------------- | ------ |
 | Correção                                                  | patch  |
 | Componente, token ou variante nova                        | minor  |
 | Algo que quebra quem usa (prop removida, token renomeado) | major  |
+
+## 0.4.0 · 25 de outubro de 2026
+
+- **No npm.** O Datum pode ser instalado em qualquer projeto: `npm install @rafaelfachinelli/datum-ui @rafaelfachinelli/datum-tokens`. Precisa de React 19 e Tailwind CSS 4. ([rafaelfachinelli/datum#1](https://github.com/rafaelfachinelli/datum/pull/1))
+- **Quebra: novos nomes.** `@datum/tokens` virou `@rafaelfachinelli/datum-tokens`, e `@datum/ui` virou `@rafaelfachinelli/datum-ui`: troque os imports e os `@import` do CSS. Os componentes, as props e as variáveis `--datum-*` não mudaram.
+- **Pacotes compilados.** Os pacotes saem em JavaScript com os tipos, um arquivo por componente, o que preserva o `"use client"` no Next.js. Não precisa mais de `transpilePackages`.
+- **Repositório próprio.** O código saiu do portfólio para [github.com/rafaelfachinelli/datum](https://github.com/rafaelfachinelli/datum), com o histórico, sob licença MIT. O nome Datum, o logo e a identidade Blueprint não entram na licença.
 
 ## 0.3.1 · 20 de outubro de 2026
 

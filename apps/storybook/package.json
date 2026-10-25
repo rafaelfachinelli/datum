@@ -10,8 +10,8 @@
     "og": "node scripts/render-og.mjs"
   },
   "dependencies": {
-    "@rafaelfachinelli/datum-tokens": "^0.3.1",
-    "@rafaelfachinelli/datum-ui": "^0.3.1",
+    "@rafaelfachinelli/datum-tokens": "^0.4.0",
+    "@rafaelfachinelli/datum-ui": "^0.4.0",
     "lucide-react": "^0.507.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
