@@ -1,0 +1,49 @@
+name: Release
+
+# A tag vX.Y.Z publishes both packages at X.Y.Z. npm trusted publishing (OIDC):
+# no token is stored, and npm records provenance. The trusted publisher is set
+# on npmjs.com for each package (repository rafaelfachinelli/datum, this file).
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          registry-url: https://registry.npmjs.org
+          cache: npm
+      # Trusted publishing needs npm 11.5.1 or later.
+      - run: npm install -g npm@^11.5.1
+      - run: npm ci
+      - run: npx turbo run typecheck test build
+      - run: npm run smoke
+      - name: The tag matches both versions
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          for dir in packages/tokens packages/ui; do
+            version=$(node -p "require('./$dir/package.json').version")
+            if [ "$version" != "$tag" ]; then
+              echo "::error::$dir is $version, the tag is $tag"
+              exit 1
+            fi
+          done
+      - name: Publish (tokens first, the components depend on them)
+        run: |
+          for dir in packages/tokens packages/ui; do
+            name=$(node -p "require('./$dir/package.json').name")
+            version=$(node -p "require('./$dir/package.json').version")
+            if npm view "$name@$version" version > /dev/null 2>&1; then
+              echo "$name@$version is already on npm, skipping"
+            else
+              npm publish --workspace "$dir"
+            fi
+          done

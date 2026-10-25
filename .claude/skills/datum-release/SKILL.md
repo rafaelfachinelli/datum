@@ -29,11 +29,11 @@ Several changes in one PR take the largest bump.
 
 ## 2. Update the versions
 
-Same version in three places:
+Same version everywhere:
 
-- `packages/tokens/package.json`;
-- `packages/ui/package.json`;
-- the `packages/tokens` and `packages/ui` entries in the root `package-lock.json` (edit the `"version"` line by hand; do not run `npm install` just for this).
+- `version` in `packages/tokens/package.json` and `packages/ui/package.json`;
+- the `@rafaelfachinelli/datum-tokens` range in `packages/ui/package.json` and both ranges in `apps/storybook/package.json` (`^X.Y.Z`);
+- then `npm install` to refresh `package-lock.json`.
 
 Also update the status line of `docs/README.md` (`Status: version X.Y.Z (N components) ...`).
 
@@ -52,7 +52,18 @@ At the top of `apps/storybook/src/Novidades.mdx`, below the version table:
 - Plain words, the voice of the docs pages: no commit jargon ("refactor", "chore").
 - A new component also links its page in the Storybook sidebar order (`.storybook/preview.tsx`) if it needs one.
 
-## 4. Check
+## 4. Publish
+
+After the PR merges, tag the merge commit on `main` and push the tag; the release workflow (`.github/workflows/release.yml`) builds, tests, runs the smoke test, checks that the tag matches both versions, and publishes the tokens first, then the components, with npm trusted publishing (no token) and provenance.
+
+```bash
+git switch main && git pull
+git tag vX.Y.Z && git push origin vX.Y.Z
+```
+
+A version already on npm is skipped, so re-running the workflow is safe.
+
+## 5. Check
 
 - `npm run build` and `npm run smoke` pass, and the Novidades page shows the new entry first.
 - `npm ls @rafaelfachinelli/datum-ui @rafaelfachinelli/datum-tokens` shows the new version.
