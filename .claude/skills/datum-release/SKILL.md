@@ -5,7 +5,7 @@ description: Use when a change touches the Datum design system (packages/tokens,
 
 # Datum release notes
 
-Datum has **one version** for `@datum/tokens` and `@datum/ui`: they always move together. The changelog is written by hand on the Storybook page **Datum / Novidades** (`apps/storybook/src/Novidades.mdx`), newest first, in pt-BR. Rules of the design system: `docs/README.md`.
+Datum has **one version** for `@rafaelfachinelli/datum-tokens` and `@rafaelfachinelli/datum-ui`: they always move together. The changelog is written by hand on the Storybook page **Datum / Novidades** (`apps/storybook/src/Novidades.mdx`), newest first, in pt-BR. Rules of the design system: `docs/README.md`.
 
 ## When it applies
 
@@ -54,5 +54,5 @@ At the top of `apps/storybook/src/Novidades.mdx`, below the version table:
 
 ## 4. Check
 
-- `npm run build -w @datum/storybook` passes and the Novidades page shows the new entry first.
-- `npm ls @datum/ui @datum/tokens` shows the new version.
+- `npm run build` and `npm run smoke` pass, and the Novidades page shows the new entry first.
+- `npm ls @rafaelfachinelli/datum-ui @rafaelfachinelli/datum-tokens` shows the new version.

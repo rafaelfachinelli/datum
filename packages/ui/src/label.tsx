@@ -3,7 +3,7 @@
 import * as LabelPrimitive from '@radix-ui/react-label'
 import * as React from 'react'
 
-import { cn } from './lib/cn'
+import { cn } from './lib/cn.js'
 
 /** The name of a form control. Dims itself when its control is disabled. */
 export function Label({

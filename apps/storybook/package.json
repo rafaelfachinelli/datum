@@ -1,5 +1,5 @@
 {
-  "name": "@datum/storybook",
+  "name": "datum-storybook",
   "private": true,
   "description": "Datum design system site (Storybook): foundations, seasons and, later, components. Deployed to design.rafaelfachinelli.com.",
   "type": "module",
@@ -10,8 +10,8 @@
     "og": "node scripts/render-og.mjs"
   },
   "dependencies": {
-    "@datum/tokens": "*",
-    "@datum/ui": "*",
+    "@rafaelfachinelli/datum-tokens": "^0.3.1",
+    "@rafaelfachinelli/datum-ui": "^0.3.1",
     "lucide-react": "^0.507.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

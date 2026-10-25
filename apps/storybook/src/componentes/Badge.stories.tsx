@@ -1,4 +1,4 @@
-import { Badge } from '@datum/ui'
+import { Badge } from '@rafaelfachinelli/datum-ui'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Check, TriangleAlert, X } from 'lucide-react'
 

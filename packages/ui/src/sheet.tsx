@@ -4,8 +4,8 @@ import * as SheetPrimitive from '@radix-ui/react-dialog'
 import { cva } from 'class-variance-authority'
 import * as React from 'react'
 
-import { focusRing } from './button'
-import { cn } from './lib/cn'
+import { focusRing } from './button.js'
+import { cn } from './lib/cn.js'
 
 /** A panel that slides in from an edge of the screen, over the page. */
 export function Sheet(props: React.ComponentProps<typeof SheetPrimitive.Root>) {

@@ -1,4 +1,4 @@
-import { Separator } from '@datum/ui'
+import { Separator } from '@rafaelfachinelli/datum-ui'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {

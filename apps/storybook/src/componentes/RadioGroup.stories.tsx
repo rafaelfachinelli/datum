@@ -1,4 +1,9 @@
-import { Label, RadioCard, RadioGroup, RadioGroupItem } from '@datum/ui'
+import {
+  Label,
+  RadioCard,
+  RadioGroup,
+  RadioGroupItem,
+} from '@rafaelfachinelli/datum-ui'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Building2, Globe, MapPin } from 'lucide-react'
 

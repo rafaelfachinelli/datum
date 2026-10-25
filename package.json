@@ -7,12 +7,13 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "turbo run dev --filter=@datum/storybook",
+    "dev": "turbo run dev --filter=datum-storybook...",
     "build": "turbo run build",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "smoke": "node scripts/smoke-pack.mjs"
   },
   "devDependencies": {
     "prettier": "^3.0.0",

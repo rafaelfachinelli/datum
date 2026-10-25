@@ -1,4 +1,4 @@
-import { cssVar } from '@datum/tokens'
+import { cssVar } from '@rafaelfachinelli/datum-tokens'
 
 import { baseTokens, dimension, tokensUnder } from './tokens-data'
 

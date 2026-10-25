@@ -2,9 +2,9 @@
 
 import * as React from 'react'
 
-import { useFieldControl } from './field'
-import { controlClass } from './input'
-import { cn } from './lib/cn'
+import { useFieldControl } from './field.js'
+import { controlClass } from './input.js'
+import { cn } from './lib/cn.js'
 
 /** A multi-line text control that the user can resize vertically. */
 export function Textarea({

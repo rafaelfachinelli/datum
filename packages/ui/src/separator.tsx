@@ -3,7 +3,7 @@
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 import * as React from 'react'
 
-import { cn } from './lib/cn'
+import { cn } from './lib/cn.js'
 
 /**
  * A thin line between groups of content. Decorative by default (hidden from
