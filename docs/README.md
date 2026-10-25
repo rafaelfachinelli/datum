@@ -7,7 +7,7 @@ Datum is the design system of Rafael Fachinelli, in the **Blueprint** visual dir
 
 - Public site: [design.rafaelfachinelli.com](https://design.rafaelfachinelli.com) (Storybook, `apps/storybook`).
 - Brand rules (essence, voice, direction, seasons, performance budget): [brand.md](./brand.md).
-- Releases: the Storybook page **Datum / Novidades**. The move out of the portfolio: [own-repo-and-npm.md](./own-repo-and-npm.md).
+- Releases and deploy (npm, the Storybook, the apps that use Datum): [publishing.md](./publishing.md). Changelog: the Storybook page **Datum / Novidades**.
 
 ## Packages
 
@@ -44,13 +44,11 @@ Both packages are published on npm and move together (one version). Inside this 
 ## Storybook
 
 - Run locally: `npm run dev` (port 6006; it also rebuilds the components on change). Build: `npm run build`.
-- After a release, `node scripts/smoke-pack.mjs --published` installs the versions in `package.json` from the registry and runs the same checks.
-- Before publishing, `npm run smoke` (also in CI) packs both packages, installs them into a new Vite + React + Tailwind 4 app, typechecks it with the published types, imports the tokens from plain Node and checks the built CSS has the components' classes.
 - Story titles stay ASCII (stable ids and URLs); `.storybook/manager.ts` maps them to accented labels in the sidebar.
-- Deploy: Coolify app "Datum (Storybook)", Dockerfile `apps/storybook/Dockerfile`, build context the repository root, branch `main`.
+- Deploy: on every push to `main`, see [publishing.md](./publishing.md#storybook-deploy).
 - Sharing card: `.storybook/manager-head.html` holds the Open Graph and Twitter tags (crawlers do not run JavaScript, so every Storybook URL shares the same card). The image `public/og.png` (1200×630) is drawn in `og/og.html`; after changing it, run `npm run og -w datum-storybook` (headless Chrome; `CHROME=<path>` to pick the browser).
 
 ## Versions and Novidades
 
 - One version for `@rafaelfachinelli/datum-tokens` and `@rafaelfachinelli/datum-ui`; they move together. Patch for fixes, minor for a new component, token, variant or optional prop, major for a breaking change.
-- The changelog is the Storybook page **Datum / Novidades** (`apps/storybook/src/Novidades.mdx`), written by hand in the PR that makes the change. Process: [.claude/skills/datum-release](../.claude/skills/datum-release/SKILL.md).
+- The changelog is the Storybook page **Datum / Novidades** (`apps/storybook/src/Novidades.mdx`), written by hand in the PR that makes the change. Process: [.claude/skills/datum-release](../.claude/skills/datum-release/SKILL.md); publishing: [publishing.md](./publishing.md#releasing-a-version).
