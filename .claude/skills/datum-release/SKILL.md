@@ -66,4 +66,5 @@ A version already on npm is skipped, so re-running the workflow is safe.
 ## 5. Check
 
 - `npm run build` and `npm run smoke` pass, and the Novidades page shows the new entry first.
+- Once the release workflow is done, `node scripts/smoke-pack.mjs --published` installs the new version from npm and passes.
 - `npm ls @rafaelfachinelli/datum-ui @rafaelfachinelli/datum-tokens` shows the new version.
