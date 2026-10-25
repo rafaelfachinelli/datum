@@ -2,6 +2,9 @@
 // Vite + React + Tailwind 4 app and checks that it typechecks, builds, and
 // gets the components' classes. Run after `npm run build`:
 //   node scripts/smoke-pack.mjs
+// With --published, it installs the versions in package.json from the npm
+// registry instead, to check a release once it is out:
+//   node scripts/smoke-pack.mjs --published
 import { execSync } from 'node:child_process'
 import fs from 'node:fs'
 import os from 'node:os'
@@ -21,9 +24,23 @@ function pack(dir) {
   return path.join(work, JSON.parse(out)[0].filename)
 }
 
-const tokens = pack('packages/tokens')
-const ui = pack('packages/ui')
-console.log(`packed ${path.basename(tokens)} and ${path.basename(ui)}`)
+function published(dir) {
+  const { version } = JSON.parse(
+    fs.readFileSync(path.join(root, dir, 'package.json'), 'utf8'),
+  )
+  return version
+}
+
+let tokens, ui
+if (process.argv.includes('--published')) {
+  tokens = published('packages/tokens')
+  ui = published('packages/ui')
+  console.log(`installing ${tokens} (tokens) and ${ui} (ui) from npm`)
+} else {
+  tokens = `file:${pack('packages/tokens')}`
+  ui = `file:${pack('packages/ui')}`
+  console.log(`packed ${path.basename(tokens)} and ${path.basename(ui)}`)
+}
 
 const files = {
   'package.json': JSON.stringify(
@@ -32,8 +49,8 @@ const files = {
       private: true,
       type: 'module',
       dependencies: {
-        '@rafaelfachinelli/datum-tokens': `file:${tokens}`,
-        '@rafaelfachinelli/datum-ui': `file:${ui}`,
+        '@rafaelfachinelli/datum-tokens': tokens,
+        '@rafaelfachinelli/datum-ui': ui,
         react: '^19.0.0',
         'react-dom': '^19.0.0',
       },

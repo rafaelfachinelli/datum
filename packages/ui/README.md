@@ -33,6 +33,20 @@ export function Download() {
 
 Components hold no text of their own: anything a screen reader announces comes from props, in your page's language.
 
+### With Next.js (App Router)
+
+The package is already JavaScript, so it needs no `transpilePackages`. Components that use state or Radix keep their `"use client"`, so you can import them from Server Components. To load only the components a page uses:
+
+```ts
+// next.config.ts
+const nextConfig = {
+  experimental: { optimizePackageImports: ['@rafaelfachinelli/datum-ui'] },
+}
+export default nextConfig
+```
+
+For the season to be right on the first paint, add the tokens' inline script to the root layout (see [@rafaelfachinelli/datum-tokens](https://www.npmjs.com/package/@rafaelfachinelli/datum-tokens)).
+
 ## License
 
 The code is under the [MIT license](./LICENSE). The name **Datum**, the RF logo and the **Blueprint** visual identity belong to Rafael Fachinelli and are not covered by it: use the components freely, and give your product its own name and look.

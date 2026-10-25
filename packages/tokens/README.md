@@ -29,6 +29,26 @@ import { seasonInlineScript } from '@rafaelfachinelli/datum-tokens'
 <script dangerouslySetInnerHTML={{ __html: seasonInlineScript }} />
 ```
 
+In the Next.js App Router, in the root layout:
+
+```tsx
+// app/layout.tsx
+import { seasonInlineScript } from '@rafaelfachinelli/datum-tokens'
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: seasonInlineScript }} />
+      </head>
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+`suppressHydrationWarning` is there because the script sets `data-season` on `<html>` before React hydrates.
+
 ## License
 
 The code is under the [MIT license](./LICENSE). The name **Datum**, the RF logo and the **Blueprint** visual identity belong to Rafael Fachinelli and are not covered by it.
