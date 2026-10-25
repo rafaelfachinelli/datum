@@ -1,7 +1,7 @@
 # Datum in its own repository, on npm: specification
 
 Audience: Rafael and AI agents moving Datum out of the portfolio.
-Status: steps 1 and 2 done; step 3 prepared (version 0.4.0, release workflow); the first publish is manual, then trusted publishing · Last updated: 2026-10-25
+Status: steps 1 to 4 done (0.4.0 published by hand, 0.4.1 from CI with trusted publishing; the Storybook deploys from this repository, auto-deploy by webhook); step 5 is in the portfolio · Last updated: 2026-10-25
 
 Datum moves to a public repository of its own and is published on npm, so anyone can install it; the portfolio becomes a private repository that installs Datum like any other package. Decided with Rafael on 2026-10-23: npm user `rafaelfachinelli`, MIT license with a brand note, history kept.
 
@@ -50,7 +50,7 @@ One PR or step each, in this order; the site keeps working after every step.
 
 ### 4. Storybook from the new repository
 
-- `apps/storybook/Dockerfile` builds from the `datum` repository's root. Coolify app "Datum (Storybook)": source changes to `rafaelfachinelli/datum`. Production change: done with Rafael's go-ahead at that moment; the old image keeps serving until the new build is healthy.
+- `apps/storybook/Dockerfile` builds from the `datum` repository's root. Coolify app "Datum (Storybook)": source changes to `rafaelfachinelli/datum`. Production change: done with Rafael's go-ahead at that moment; the old image keeps serving until the new build is healthy. Done 2026-10-25: repository `rafaelfachinelli/datum`, branch `main`, Dockerfile `/apps/storybook/Dockerfile`; a push webhook on this repository (Coolify manual GitHub webhook, the app's secret) triggers the deploys.
 - The Storybook introduction: install with npm, the new package names, the link to the new repository.
 
 ### 5. The site installs Datum from npm
