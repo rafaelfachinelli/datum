@@ -8,6 +8,8 @@ import {
   CodeBlockLine,
   CodeBlockTitle,
 } from '@rafaelfachinelli/datum-ui'
+import { useHighlightedCode } from '@rafaelfachinelli/datum-ui/highlight'
+import type * as React from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { FileCode, TriangleAlert } from 'lucide-react'
 
@@ -40,6 +42,47 @@ const redirect = `# Manda o endereço antigo para a página nova
 location /cardapio-antigo {
   return 301 /cardapio;
 }`
+
+const form = `// Envia o pedido de bolo pelo formulário do site
+export async function enviarPedido(pedido: Pedido) {
+  const resposta = await fetch('/api/pedidos', {
+    method: 'POST',
+    body: JSON.stringify(pedido),
+  })
+  if (!resposta.ok) throw new Error('O pedido não chegou')
+  return resposta.json() as Promise<{ numero: number }>
+}
+`
+
+function ColoredCode(args: React.ComponentProps<typeof CodeBlock>) {
+  const lines = useHighlightedCode(form, 'ts')
+  return (
+    <CodeBlock {...args}>
+      <CodeBlockHeader>
+        <CodeBlockTitle>
+          <FileCode aria-hidden="true" />
+          pedidos.ts
+        </CodeBlockTitle>
+        <CodeBlockActions>
+          <CodeBlockCopyButton
+            value={form}
+            label="Copiar"
+            copiedLabel="Copiado"
+          />
+        </CodeBlockActions>
+      </CodeBlockHeader>
+      <CodeBlockContent lineNumbers>
+        {lines.map((line, index) => (
+          <CodeBlockLine key={index}>{line}</CodeBlockLine>
+        ))}
+      </CodeBlockContent>
+    </CodeBlock>
+  )
+}
+
+export const Colored: Story = {
+  render: args => <ColoredCode {...args} />,
+}
 
 export const Plain: Story = {
   render: args => (

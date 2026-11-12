@@ -25,6 +25,19 @@ Um bloco de código ou de saída de terminal, em fonte monoespaçada, com títul
 | `CodeBlockLine`       | Uma linha, marcada como `added`, `removed` ou `highlighted`.                                                                                  |
 | `CodeBlockFooter`     | Uma linha abaixo: uma nota, um link para a fonte.                                                                                             |
 
+## Código colorido
+
+As cores vêm do `useHighlightedCode`, num ponto de entrada próprio (`@rafaelfachinelli/datum-ui/highlight`): só quem colore código instala o `shiki`. Cada linguagem carrega na primeira vez que aparece (bash, css, diff, html, javascript, json, jsx, markdown, python, sql, tsx, typescript, yaml); as outras ficam sem cor. Enquanto o código chega aos pedaços, só as linhas novas são coloridas. As cores são da paleta do Datum, todas com contraste de 4,5:1 ou mais.
+
+```tsx
+const lines = useHighlightedCode(code, 'ts')
+<CodeBlockContent lineNumbers>
+  {lines.map((line, i) => <CodeBlockLine key={i}>{line}</CodeBlockLine>)}
+</CodeBlockContent>
+```
+
+<Canvas of={CodeBlockStories.Colored} />
+
 ## Com título e copiar
 
 <Canvas of={CodeBlockStories.WithHeaderAndCopy} />
