@@ -21,12 +21,6 @@ const meta = {
     onValueChange: {
       description: 'Chamado com o valor da opção escolhida.',
     },
-    orientation: {
-      description:
-        'Direção das setas do teclado. Não muda o layout, que vem do `className`.',
-      control: 'inline-radio',
-      options: ['vertical', 'horizontal'],
-    },
     disabled: {
       description: 'Desabilita todas as opções.',
       control: 'boolean',
@@ -112,7 +106,7 @@ export const CardsWithIcons: Story = {
 }
 
 export const Grid: Story = {
-  args: { defaultValue: '1k', orientation: 'horizontal' },
+  args: { defaultValue: '1k' },
   decorators: [Story => <div className="max-w-xl">{Story()}</div>],
   render: args => (
     <div className="grid gap-3">

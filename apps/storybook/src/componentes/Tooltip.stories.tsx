@@ -24,10 +24,12 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: args => (
     <Tooltip {...args}>
-      <TooltipTrigger asChild>
-        <Button variant="outline" size="icon" aria-label="Compartilhar">
-          <Share2 />
-        </Button>
+      <TooltipTrigger
+        render={
+          <Button variant="outline" size="icon" aria-label="Compartilhar" />
+        }
+      >
+        <Share2 />
       </TooltipTrigger>
       <TooltipContent>Compartilhar</TooltipContent>
     </Tooltip>
@@ -38,10 +40,12 @@ export const Open: Story = {
   args: { defaultOpen: true },
   render: args => (
     <Tooltip {...args}>
-      <TooltipTrigger asChild>
-        <Button variant="outline" size="icon" aria-label="Compartilhar">
-          <Share2 />
-        </Button>
+      <TooltipTrigger
+        render={
+          <Button variant="outline" size="icon" aria-label="Compartilhar" />
+        }
+      >
+        <Share2 />
       </TooltipTrigger>
       <TooltipContent>Compartilhar</TooltipContent>
     </Tooltip>
@@ -53,10 +57,8 @@ export const Sides: Story = {
     <div className="grid grid-cols-2 gap-x-24 gap-y-12">
       {(['top', 'right', 'bottom', 'left'] as const).map(side => (
         <Tooltip key={side} defaultOpen>
-          <TooltipTrigger asChild>
-            <Button variant="outline" size="sm">
-              {side}
-            </Button>
+          <TooltipTrigger render={<Button variant="outline" size="sm" />}>
+            {side}
           </TooltipTrigger>
           <TooltipContent side={side}>Dica em {side}</TooltipContent>
         </Tooltip>
@@ -77,10 +79,10 @@ export const Group: Story = {
           ] as const
         ).map(([Icon, label]) => (
           <Tooltip key={label}>
-            <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label={label}>
-                <Icon />
-              </Button>
+            <TooltipTrigger
+              render={<Button variant="ghost" size="icon" aria-label={label} />}
+            >
+              <Icon />
             </TooltipTrigger>
             <TooltipContent>{label}</TooltipContent>
           </Tooltip>
@@ -93,13 +95,15 @@ export const Group: Story = {
 export const OnDisabledAction: Story = {
   render: () => (
     <Tooltip>
-      <TooltipTrigger asChild>
-        <span
-          tabIndex={0}
-          className="inline-flex rounded-[var(--datum-radius-md)]"
-        >
-          <Button disabled>Enviar</Button>
-        </span>
+      <TooltipTrigger
+        render={
+          <span
+            tabIndex={0}
+            className="inline-flex rounded-[var(--datum-radius-md)]"
+          />
+        }
+      >
+        <Button disabled>Enviar</Button>
       </TooltipTrigger>
       <TooltipContent>Preencha o nome, o e-mail e a mensagem</TooltipContent>
     </Tooltip>

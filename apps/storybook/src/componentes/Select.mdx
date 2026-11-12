@@ -6,20 +6,20 @@ import * as SelectStories from './Select.stories'
 
 # Select
 
-Escolher uma opção numa lista: ano, categoria, ordenação. Feito sobre o Select do Radix: abre com teclado, busca pela primeira letra, navega com as setas e é anunciado como lista pelo leitor de tela.
+Escolher uma opção numa lista: ano, categoria, ordenação. Feito sobre o Select do Base UI: abre com teclado, busca pela primeira letra, navega com as setas e é anunciado como lista pelo leitor de tela.
 
 <Canvas of={SelectStories.Default} />
 
 ## Partes
 
-| Parte                                           | Papel                                                                          |
-| ----------------------------------------------- | ------------------------------------------------------------------------------ |
-| `Select`                                        | O estado: valor, aberto ou fechado (`value`, `defaultValue`, `onValueChange`). |
-| `SelectTrigger`                                 | O botão que mostra o valor. Recebe o `id` do rótulo; tamanhos `md` e `sm`.     |
-| `SelectValue`                                   | O valor escolhido, ou o `placeholder`.                                         |
-| `SelectContent`                                 | A lista, numa camada acima da página.                                          |
-| `SelectItem`                                    | Uma opção. A escolhida fica na cor da temporada, com um visto.                 |
-| `SelectGroup`, `SelectLabel`, `SelectSeparator` | Agrupam opções longas.                                                         |
+| Parte                                           | Papel                                                                                                                                |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `Select`                                        | O estado: valor, aberto ou fechado (`value`, `defaultValue`, `onValueChange`) e `items`, o nome de cada valor, que o gatilho mostra. |
+| `SelectTrigger`                                 | O botão que mostra o valor. Recebe o `id` do rótulo; tamanhos `md` e `sm`.                                                           |
+| `SelectValue`                                   | O valor escolhido, ou o `placeholder`.                                                                                               |
+| `SelectContent`                                 | A lista, numa camada acima da página.                                                                                                |
+| `SelectItem`                                    | Uma opção. A escolhida fica na cor da temporada, com um visto.                                                                       |
+| `SelectGroup`, `SelectLabel`, `SelectSeparator` | Agrupam opções longas.                                                                                                               |
 
 ## Aberto
 

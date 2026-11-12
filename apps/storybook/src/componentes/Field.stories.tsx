@@ -88,7 +88,7 @@ export const WithTextarea: Story = {
 export const WithSelect: Story = {
   render: () => (
     <Field label="Assunto" required>
-      <Select>
+      <Select items={subjects}>
         <SelectTrigger>
           <SelectValue placeholder="Escolha um assunto" />
         </SelectTrigger>
@@ -109,6 +109,8 @@ export const Disabled: Story = {
     </Field>
   ),
 }
+
+const subjects = { job: 'Vaga', project: 'Projeto', talk: 'Palestra' }
 
 type Errors = Partial<Record<'name' | 'email' | 'subject' | 'message', string>>
 
@@ -148,7 +150,11 @@ function ContactFormExample() {
         <Input name="email" type="email" autoComplete="email" />
       </Field>
       <Field label="Assunto" required error={errors.subject}>
-        <Select value={subject} onValueChange={setSubject}>
+        <Select
+          items={subjects}
+          value={subject}
+          onValueChange={value => setSubject(value ?? '')}
+        >
           <SelectTrigger>
             <SelectValue placeholder="Escolha um assunto" />
           </SelectTrigger>

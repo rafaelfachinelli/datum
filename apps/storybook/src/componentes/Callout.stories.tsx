@@ -114,9 +114,7 @@ export const NumberedList: Story = {
   args: { tone: 'neutral', icon: <Lightbulb /> },
   render: args => (
     <Callout {...args}>
-      <CalloutTitle asChild>
-        <h2>Lições</h2>
-      </CalloutTitle>
+      <CalloutTitle render={<h2 />}>Lições</CalloutTitle>
       <CalloutContent>
         <ol>
           <li>Testes rápidos rodam a cada mudança.</li>

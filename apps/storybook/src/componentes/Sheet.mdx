@@ -6,7 +6,7 @@ import * as SheetStories from './Sheet.stories'
 
 # Sheet
 
-Um painel que desliza de uma borda da tela, por cima da página: filtros, detalhes, um formulário curto. Feito sobre o Dialog do Radix: prende o foco enquanto está aberto, fecha com Esc ou com um clique no fundo e devolve o foco ao botão que abriu.
+Um painel que desliza de uma borda da tela, por cima da página: filtros, detalhes, um formulário curto. Feito sobre o Dialog do Base UI: prende o foco enquanto está aberto, fecha com Esc ou com um clique no fundo e devolve o foco ao botão que abriu.
 
 <Canvas of={SheetStories.Default} />
 
@@ -15,11 +15,11 @@ Um painel que desliza de uma borda da tela, por cima da página: filtros, detalh
 | Parte                                           | Papel                                                                                                                                        |
 | ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Sheet`                                         | O estado: aberto ou fechado (`open`, `onOpenChange`, `defaultOpen`).                                                                         |
-| `SheetTrigger`                                  | O botão que abre. Use `asChild` com um Button.                                                                                               |
+| `SheetTrigger`                                  | O botão que abre. Use `render={<Button />}`.                                                                                                 |
 | `SheetContent`                                  | O painel, com o fundo escurecido e o botão de fechar. `side` escolhe a borda; `closeLabel` é o nome do botão de fechar, no idioma da página. |
 | `SheetHeader`, `SheetTitle`, `SheetDescription` | Título (obrigatório para o leitor de tela anunciar o painel) e uma linha de contexto.                                                        |
 | `SheetFooter`                                   | Ações no fim do painel.                                                                                                                      |
-| `SheetClose`                                    | Transforma qualquer botão em "fechar" (`asChild`).                                                                                           |
+| `SheetClose`                                    | Transforma qualquer botão em "fechar" (`render={<Button />}`).                                                                               |
 
 ## Aberto
 
