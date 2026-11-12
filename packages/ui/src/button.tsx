@@ -3,6 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
 import { cn } from './lib/cn.js'
+import { Spinner } from './spinner.js'
 
 export const focusRing =
   'outline-none focus-visible:ring-2 focus-visible:ring-season-accent focus-visible:ring-offset-2 focus-visible:ring-offset-board'
@@ -39,34 +40,6 @@ export const buttonVariants = cva(
   },
 )
 
-// The spinner tells the user the action is still running, so it keeps turning
-// under reduced motion, only slower: it is status, not decoration.
-function Spinner() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      aria-hidden="true"
-      className="animate-spin motion-reduce:[animation-duration:2s]"
-    >
-      <circle
-        cx="12"
-        cy="12"
-        r="9"
-        stroke="currentColor"
-        strokeOpacity="0.25"
-        strokeWidth="3"
-      />
-      <path
-        d="M21 12a9 9 0 0 0-9-9"
-        stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-    </svg>
-  )
-}
-
 export type ButtonProps = ButtonPrimitive.Props &
   VariantProps<typeof buttonVariants> & {
     /** Shows a spinner, blocks clicks and announces the busy state. */
@@ -92,7 +65,8 @@ export function Button({
       aria-busy={loading || undefined}
       {...props}
     >
-      {loading && <Spinner />}
+      {/* Decorative and sized by the button, like its icons: the busy state is announced by the button itself. */}
+      {loading && <Spinner size={null} />}
       {children}
     </ButtonPrimitive>
   )

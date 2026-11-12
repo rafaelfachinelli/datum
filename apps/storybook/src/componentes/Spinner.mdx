@@ -1,0 +1,39 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as SpinnerStories from './Spinner.stories'
+
+<Meta of={SpinnerStories} />
+
+# Spinner
+
+Um anel que gira enquanto algo está a caminho, na cor do texto ao redor. Com movimento reduzido ele continua girando, só que mais devagar: é um estado, não enfeite.
+
+<Canvas of={SpinnerStories.Default} />
+
+## Tamanhos
+
+`sm` (16 px, o padrão, ao lado de um texto), `md` (24 px) e `lg` (32 px, no meio de uma região).
+
+<Canvas of={SpinnerStories.Sizes} />
+
+## Uma região carregando
+
+No meio do espaço que o conteúdo vai ocupar, com as palavras embaixo. Como as palavras já dizem o que carrega, a região é o `role="status"` e o Spinner vai sem `label`.
+
+<Canvas of={SpinnerStories.Region} />
+
+## Num botão
+
+O Button usa o mesmo Spinner com `loading`: ele mesmo anuncia que está ocupado.
+
+<Canvas of={SpinnerStories.InAButton} />
+
+## Acessibilidade
+
+- Com `label` ("Carregando a equipe"), o Spinner vira um `role="status"` e o leitor de tela anuncia o texto, no idioma da página.
+- Sem `label`, ele é decorativo: use assim quando um texto ao lado ou o contêiner já diz o que está carregando.
+
+## Boas práticas
+
+- Use quando a espera é curta e a forma do conteúdo é desconhecida. Se a forma é conhecida (uma lista, um cartão), prefira um esqueleto dela.
+- Diga o que carrega, não só "Carregando".
