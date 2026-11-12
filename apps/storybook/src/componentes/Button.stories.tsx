@@ -25,10 +25,9 @@ const meta = {
       control: 'boolean',
     },
     disabled: { description: 'Desabilita o botão.', control: 'boolean' },
-    asChild: {
-      // No control: with plain-text children, Slot has no element to style.
+    render: {
       description:
-        'Aplica o visual ao elemento filho (por exemplo um link). Veja a história **As Link**.',
+        'Desenha outro elemento (por exemplo um link) com o visual do componente. Veja a história **As Link**.',
       control: false,
     },
     children: { description: 'O texto e, se houver, o ícone.' },
@@ -109,8 +108,13 @@ export const Disabled: Story = {
 
 export const AsLink: Story = {
   render: args => (
-    <Button {...args} asChild variant="outline">
-      <a href="https://rafaelfachinelli.com">Abrir o portfólio</a>
+    <Button
+      {...args}
+      render={<a href="https://rafaelfachinelli.com" />}
+      nativeButton={false}
+      variant="outline"
+    >
+      Abrir o portfólio
     </Button>
   ),
 }

@@ -1,0 +1,31 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as CollapsibleStories from './Collapsible.stories'
+
+<Meta of={CollapsibleStories} />
+
+# Collapsible
+
+Uma seção que abre e fecha: detalhes que nem todo mundo precisa ver de primeira. É o Collapsible do Base UI, sem estilo próprio; o Trace usa ele nos passos com detalhes.
+
+<Canvas of={CollapsibleStories.Closed} />
+
+<Controls of={CollapsibleStories.Closed} />
+
+## Partes
+
+| Parte                | Papel                                                                                                                                           |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Collapsible`        | O estado: aberto ou fechado (`open`, `onOpenChange`, `defaultOpen`).                                                                            |
+| `CollapsibleTrigger` | O botão que abre e fecha. Use `render={<Button />}` para o visual de botão.                                                                     |
+| `CollapsibleContent` | O conteúdo escondido. Sem estilo: `--collapsible-panel-height`, `data-starting-style` e `data-ending-style` permitem animar a altura se quiser. |
+
+## Aberto
+
+<Canvas of={CollapsibleStories.Open} />
+
+## Acessibilidade
+
+- O gatilho é um botão com `aria-expanded` e `aria-controls`: o leitor de tela anuncia se está aberto.
+- O texto do gatilho diz o que abre ("O que o agente olhou"), não só "Mais".
+- Um ícone que gira ao abrir é decorativo (`aria-hidden`); com movimento reduzido, ele troca de posição sem animar.

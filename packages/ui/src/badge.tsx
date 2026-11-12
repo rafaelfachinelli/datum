@@ -1,4 +1,5 @@
-import { Slot } from '@radix-ui/react-slot'
+import { mergeProps } from '@base-ui/react/merge-props'
+import { useRender } from '@base-ui/react/use-render'
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
@@ -28,24 +29,18 @@ export const badgeVariants = cva(
   },
 )
 
-export type BadgeProps = React.ComponentProps<'span'> &
-  VariantProps<typeof badgeVariants> & {
-    /** Renders the child element (for example a link) with the badge styles. */
-    asChild?: boolean
-  }
+/** `render` draws another element (a link: render={<a href="/" />}) with the badge styles; it replaces asChild. */
+export type BadgeProps = useRender.ComponentProps<'span'> &
+  VariantProps<typeof badgeVariants>
 
-export function Badge({
-  className,
-  variant,
-  asChild = false,
-  ...props
-}: BadgeProps) {
-  const Comp = asChild ? Slot : 'span'
-  return (
-    <Comp
-      data-slot="badge"
-      className={cn(badgeVariants({ variant }), className)}
-      {...props}
-    />
-  )
+export function Badge({ className, variant, render, ...props }: BadgeProps) {
+  return useRender({
+    defaultTagName: 'span',
+    props: mergeProps<'span'>(
+      { className: cn(badgeVariants({ variant }), className) },
+      props,
+    ),
+    render,
+    state: { slot: 'badge', variant },
+  })
 }

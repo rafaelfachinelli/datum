@@ -1,4 +1,4 @@
-import { Slot } from '@radix-ui/react-slot'
+import { Button as ButtonPrimitive } from '@base-ui/react/button'
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
@@ -67,10 +67,8 @@ function Spinner() {
   )
 }
 
-export type ButtonProps = React.ComponentProps<'button'> &
+export type ButtonProps = ButtonPrimitive.Props &
   VariantProps<typeof buttonVariants> & {
-    /** Renders the child element (for example a link) with the button styles. */
-    asChild?: boolean
     /** Shows a spinner, blocks clicks and announces the busy state. */
     loading?: boolean
   }
@@ -79,32 +77,23 @@ export function Button({
   className,
   variant,
   size,
-  asChild = false,
   loading = false,
   disabled,
   children,
   ...props
 }: ButtonProps) {
-  const classes = cn(buttonVariants({ variant, size }), className)
-
-  if (asChild) {
-    return (
-      <Slot data-slot="button" className={classes} {...props}>
-        {children}
-      </Slot>
-    )
-  }
-
+  // `render` draws another element (a link: <Button render={<a href="/" />} nativeButton={false}>) with the button's
+  // styles and behavior; it replaces Radix's asChild.
   return (
-    <button
+    <ButtonPrimitive
       data-slot="button"
-      className={classes}
+      className={cn(buttonVariants({ variant, size }), className)}
       disabled={disabled || loading}
       aria-busy={loading || undefined}
       {...props}
     >
       {loading && <Spinner />}
       {children}
-    </button>
+    </ButtonPrimitive>
   )
 }

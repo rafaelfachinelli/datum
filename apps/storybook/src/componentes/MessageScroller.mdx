@@ -1,0 +1,39 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as MessageScrollerStories from './MessageScroller.stories'
+
+<Meta of={MessageScrollerStories} />
+
+# MessageScroller
+
+A área que rola uma conversa. Abre no fim, acompanha as mensagens novas enquanto quem lê está lá embaixo e para de acompanhar quando a pessoa sobe para reler. Um botão aparece para voltar ao fim. Feito sobre a peça sem estilo `@shadcn/react/message-scroller`.
+
+<Canvas of={MessageScrollerStories.LongConversation} />
+
+<Controls of={MessageScrollerStories.LongConversation} />
+
+## Partes
+
+| Parte                     | Papel                                                                                                                                                 |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `MessageScrollerProvider` | O estado da rolagem: `autoScroll`, `defaultScrollPosition`. Envolve o MessageScroller e quem usa os hooks.                                            |
+| `MessageScroller`         | A moldura: a área de rolagem e os botões por cima dela. Ocupa a altura do pai; dê altura a ele.                                                       |
+| `MessageScrollerViewport` | A região que rola. `aria-label` é obrigatório, no idioma da página ("Mensagens"). A borda de baixo some em degradê enquanto há mais conteúdo.         |
+| `MessageScrollerContent`  | A lista das mensagens, um `log` ao vivo: o que chega é anunciado.                                                                                     |
+| `MessageScrollerItem`     | Uma vez de cada um. `messageId` para `scrollToMessage`; `scrollAnchor` na pergunta da pessoa, para a resposta aparecer logo abaixo dela.              |
+| `MessageScrollerButton`   | Vai para o fim (ou o começo, com `direction="start"`). Só aparece quando há o que rolar. `label` é obrigatório: o nome do botão, no idioma da página. |
+
+Os hooks `useMessageScroller` (`scrollToEnd`, `scrollToStart`, `scrollToMessage`), `useMessageScrollerScrollable` e `useMessageScrollerVisibility` saem do mesmo pacote.
+
+## Resposta chegando
+
+A resposta do agente cresce palavra por palavra e a conversa acompanha. Role para cima durante a resposta: ela para de acompanhar e o botão aparece.
+
+<Canvas of={MessageScrollerStories.StreamingReply} />
+
+## Acessibilidade
+
+- A região de rolagem recebe foco pelo teclado (setas, Page Up/Down) e mostra o anel de foco por dentro.
+- A lista é um `log` com `aria-relevant="additions"`: o leitor de tela lê as mensagens novas, não a conversa toda de novo.
+- Marque a mensagem que ainda está chegando com `aria-busy` até terminar.
+- Os botões de ir para o fim e para o começo somem do teclado quando não há para onde rolar. Com movimento reduzido, eles só aparecem e somem, sem deslizar.

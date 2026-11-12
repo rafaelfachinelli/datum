@@ -1,17 +1,11 @@
-'use client'
-
-import * as LabelPrimitive from '@radix-ui/react-label'
 import * as React from 'react'
 
 import { cn } from './lib/cn.js'
 
 /** The name of a form control. Dims itself when its control is disabled. */
-export function Label({
-  className,
-  ...props
-}: React.ComponentProps<typeof LabelPrimitive.Root>) {
+export function Label({ className, ...props }: React.ComponentProps<'label'>) {
   return (
-    <LabelPrimitive.Root
+    <label
       data-slot="label"
       className={cn(
         'text-ink flex items-center gap-2 text-sm leading-none font-medium select-none',

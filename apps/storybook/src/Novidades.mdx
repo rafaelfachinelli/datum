@@ -12,6 +12,14 @@ O que mudou em cada versão do Datum, da mais nova para a mais antiga. Os pacote
 | Componente, token ou variante nova                        | minor  |
 | Algo que quebra quem usa (prop removida, token renomeado) | major  |
 
+## 0.5.0 · 12 de novembro de 2026
+
+- **Componentes de conversa**, adaptados dos novos componentes de chat do shadcn/ui para os tokens do Datum: **Message**, **Bubble**, **Marker**, **MessageScroller**, **Attachment**, **Trace**, **CodeBlock** (sem realce de sintaxe, para o pacote ficar leve) e **Questionnaire**, mais o **Collapsible**, que o Trace usa. Como os outros, não escrevem texto de interface: o nome do botão de copiar, do botão de ir para o fim, da região de mensagens, o progresso e os botões do questionário vêm por props, no idioma da página. ([#6](https://github.com/rafaelfachinelli/datum/pull/6))
+- **Utilitários `scroll-fade` e `shimmer`** no `styles.css` (do shadcn/ui, MIT): bordas que somem em degradê enquanto há mais para rolar e texto que brilha enquanto algo acontece. O brilho para com movimento reduzido. ([#6](https://github.com/rafaelfachinelli/datum/pull/6))
+- **Quebra: Base UI no lugar do Radix.** Todos os componentes passaram para o [Base UI](https://base-ui.com). O `asChild` virou `render`: `<Button render={<a href="/" />} nativeButton={false}>` em vez de `<Button asChild><a href="/" /></Button>`, e o mesmo vale para Badge, CalloutTitle e os gatilhos de Sheet e Tooltip. ([#6](https://github.com/rafaelfachinelli/datum/pull/6))
+- **Select** recebe `items` (valor → rótulo), para o gatilho mostrar o rótulo da opção escolhida em vez do valor. ([#6](https://github.com/rafaelfachinelli/datum/pull/6))
+- **Quebra: RadioGroup e Tooltip.** O RadioGroup não tem mais `orientation`: as quatro setas navegam entre as opções. O `TooltipProvider` recebe `delay` no lugar de `delayDuration`. ([#6](https://github.com/rafaelfachinelli/datum/pull/6))
+
 ## 0.4.1 · 25 de outubro de 2026
 
 - **Uso com Next.js** na página dos pacotes no npm: sem `transpilePackages`, o `optimizePackageImports` para carregar só os componentes usados e o script da temporada no layout. Primeira versão publicada pelo GitHub Actions, com prova de origem (provenance).

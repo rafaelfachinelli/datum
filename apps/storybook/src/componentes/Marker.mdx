@@ -1,0 +1,45 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as MarkerStories from './Marker.stories'
+
+<Meta of={MarkerStories} />
+
+# Marker
+
+Uma linha discreta no meio da conversa: uma data, "o agente entrou", um status. Não é mensagem de ninguém; marca um momento.
+
+<Canvas of={MarkerStories.Default} />
+
+<Controls of={MarkerStories.Default} />
+
+## Partes
+
+| Parte           | Papel                                                                               |
+| --------------- | ----------------------------------------------------------------------------------- |
+| `Marker`        | A linha. `variant` escolhe o desenho; `render` troca o elemento (um link, um `h2`). |
+| `MarkerIcon`    | Um ícone decorativo antes do texto.                                                 |
+| `MarkerContent` | O texto. Links dentro dele já vêm sublinhados.                                      |
+
+## Separador
+
+Divide a conversa por dia ou por assunto.
+
+<Canvas of={MarkerStories.Separator} />
+
+## Com fio
+
+Abre uma seção, como o assunto da conversa.
+
+<Canvas of={MarkerStories.Border} />
+
+## Status ao vivo
+
+Com a classe `shimmer`, o texto brilha enquanto algo acontece. Com movimento reduzido no sistema, o brilho para e o texto fica normal.
+
+<Canvas of={MarkerStories.LiveStatus} />
+
+## Acessibilidade
+
+- O ícone é decorativo; o texto carrega a mensagem.
+- Um status que muda (como "Analisando…") fica dentro de uma região `role="status"` para o leitor de tela anunciar.
+- Uma data que separa partes da conversa pode virar título com `render={<h2 />}`, para quem navega por títulos.

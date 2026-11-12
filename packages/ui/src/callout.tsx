@@ -1,4 +1,5 @@
-import { Slot } from '@radix-ui/react-slot'
+import { mergeProps } from '@base-ui/react/merge-props'
+import { useRender } from '@base-ui/react/use-render'
 import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
@@ -72,23 +73,26 @@ export function Callout({
   )
 }
 
-/** The title, a `p` by default; with `asChild`, style your own heading (`h2`, `h3`). */
+/** The title, a `p` by default; with `render` (render={<h2 />}), your own heading (`h2`, `h3`). */
 export function CalloutTitle({
   className,
-  asChild = false,
+  render,
   ...props
-}: React.ComponentProps<'p'> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : 'p'
-  return (
-    <Comp
-      data-slot="callout-title"
-      className={cn(
-        'font-display text-base leading-snug font-semibold',
-        className,
-      )}
-      {...props}
-    />
-  )
+}: useRender.ComponentProps<'p'>) {
+  return useRender({
+    defaultTagName: 'p',
+    props: mergeProps<'p'>(
+      {
+        className: cn(
+          'font-display text-base leading-snug font-semibold',
+          className,
+        ),
+      },
+      props,
+    ),
+    render,
+    state: { slot: 'callout-title' },
+  })
 }
 
 /** The body: text, lists and links, styled for reading inside the box. */

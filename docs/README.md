@@ -1,7 +1,7 @@
 # Datum
 
 Audience: developers and AI agents working on the Datum design system.
-Status: version 0.4.1 (14 components); changelog on the Novidades page · Last updated: 2026-10-25
+Status: version 0.5.0 (23 components); changelog on the Novidades page · Last updated: 2026-11-12
 
 Datum is the design system of Rafael Fachinelli, in the **Blueprint** visual direction (the drafting board). In technical drawing, the datum is the reference every dimension is measured from; the design system plays the same role for color, space and type.
 
@@ -15,7 +15,7 @@ Datum is the design system of Rafael Fachinelli, in the **Blueprint** visual dir
 | ----------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `packages/tokens` | `@rafaelfachinelli/datum-tokens`    | W3C DTCG tokens; builds `dist/tokens.css` (CSS variables), `dist/theme.css` (Tailwind 4 theme) and `dist/tokens.json`; exports `getSeason`, `seasonIdFor`, `seasonInlineScript`, `contrastRatio`, `cssVar` |
 | `apps/storybook`  | `datum-storybook` | Storybook 10 (react-vite); docs pages in pt-BR; static site served by nginx                                                                                                                                |
-| `packages/ui`     | `@rafaelfachinelli/datum-ui`        | React components (primitives and general patterns) styled with Tailwind 4 on the token theme; shadcn/ui and Radix as the base                                                                              |
+| `packages/ui`     | `@rafaelfachinelli/datum-ui`        | React components (primitives and general patterns) styled with Tailwind 4 on the token theme; shadcn/ui and Base UI as the base                                                                              |
 
 Both packages are published on npm and move together (one version). Inside this repository, the Storybook consumes the built packages through npm workspaces, the same way an app does.
 
@@ -36,7 +36,7 @@ Both packages are published on npm and move together (one version). Inside this 
 
 - **Only primitives and general-purpose patterns** (Button, Badge, Card, Label, Separator, Input, Textarea, Select, RadioGroup, Tooltip, Sheet, Field, Callout, Stat). Components hold no user-facing text of their own: anything a screen reader says (a Stat trend, the Sheet close button) comes from props, so the consumer writes it in the page's language. Datum is shown publicly as a portfolio piece, so it holds what any project could use. Compositions specific to one page of the site (article card, home metrics, page title) are built in the site (rafaelfachinelli.com) from Datum pieces and never move here.
 - Form controls (Input, Textarea, SelectTrigger) share `controlClass` and call `useFieldControl(props)`, so inside a `Field` they get the id and ARIA wiring. A new control does the same.
-- Code: `packages/ui/src/<component>.tsx`, exported from `src/index.ts`. Variants with `cva`, classes merged with `cn`, `asChild` (Radix Slot) where a component may render a link. Colors only from semantic tokens, so every component follows the season.
+- Code: `packages/ui/src/<component>.tsx`, exported from `src/index.ts`. Variants with `cva`, classes merged with `cn`, `render` (Base UI's `useRender`) where a component may render another element, such as a link. Colors only from semantic tokens, so every component follows the season.
 - The package builds with `tsc` to `dist`: one ES module per source file, so `"use client"` stays on the files that need it, with `.d.ts` next to them; relative imports carry `.js`, so plain Node ESM resolves them too. `src` ships as well, for source maps. `styles.css` is copied to `dist`, where its `@source "./"` makes the consumer's Tailwind scan the built files. A consumer imports `tailwindcss`, `@rafaelfachinelli/datum-tokens/theme.css` and then `@rafaelfachinelli/datum-ui/styles.css` (an `@source`, so Tailwind generates the components' classes).
 - Docs: `apps/storybook/src/componentes/<Name>.stories.tsx` (one story per state) and `<Name>.mdx` (usage in pt-BR: when to use, variants, states, accessibility). Prop descriptions go in the stories' `argTypes`, in pt-BR.
 - Accessibility: `@storybook/addon-a11y` runs axe on every story. Check color contrast in every season (the `season` global, for example `&globals=season:natal`) before merging a component with color variants.

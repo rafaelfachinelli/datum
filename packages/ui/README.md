@@ -1,6 +1,6 @@
 # @rafaelfachinelli/datum-ui
 
-React components of **Datum**, the design system of [rafaelfachinelli.com](https://rafaelfachinelli.com): accessible primitives and general patterns (Button, Badge, Card, Field, Input, Textarea, Select, RadioGroup, Sheet, Tooltip, Separator, Label, Callout, Stat) on Radix and shadcn/ui, styled with Tailwind CSS 4 on the [Datum tokens](https://www.npmjs.com/package/@rafaelfachinelli/datum-tokens).
+React components of **Datum**, the design system of [rafaelfachinelli.com](https://rafaelfachinelli.com): accessible primitives and general patterns (Button, Badge, Card, Field, Input, Textarea, Select, RadioGroup, Sheet, Tooltip, Separator, Label, Callout, Stat) on Base UI and shadcn/ui, styled with Tailwind CSS 4 on the [Datum tokens](https://www.npmjs.com/package/@rafaelfachinelli/datum-tokens).
 
 Every component, state and prop is documented in the Storybook: **[design.rafaelfachinelli.com](https://design.rafaelfachinelli.com)** (in Portuguese).
 
@@ -35,7 +35,7 @@ Components hold no text of their own: anything a screen reader announces comes f
 
 ### With Next.js (App Router)
 
-The package is already JavaScript, so it needs no `transpilePackages`. Components that use state or Radix keep their `"use client"`, so you can import them from Server Components. To load only the components a page uses:
+The package is already JavaScript, so it needs no `transpilePackages`. Components that use state or Base UI keep their `"use client"`, so you can import them from Server Components. To load only the components a page uses:
 
 ```ts
 // next.config.ts

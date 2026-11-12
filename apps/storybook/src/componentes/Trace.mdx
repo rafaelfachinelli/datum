@@ -1,0 +1,51 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as TraceStories from './Trace.stories'
+
+<Meta of={TraceStories} />
+
+# Trace
+
+Os passos que um agente deu para responder: abriu uma página, leu arquivos, rodou uma ferramenta. Uma linha por passo, com o estado de cada um, e detalhes que abrem embaixo quando a pessoa quer conferir.
+
+<Canvas of={TraceStories.Default} />
+
+<Controls of={TraceStories.Default} />
+
+## Partes
+
+| Parte                     | Papel                                                                              |
+| ------------------------- | ---------------------------------------------------------------------------------- |
+| `Trace`                   | A lista de passos. Uma linha dentro de um link ou botão ganha o anel de foco.      |
+| `TraceLine`               | Um passo. `status`: `running`, `pending` ou `error`; sem status, o passo terminou. |
+| `TraceIcon`               | Um ícone decorativo.                                                               |
+| `TraceTitle`              | O que o passo fez, cortado com reticências.                                        |
+| `TraceDescription`        | Um detalhe curto depois do título: tempo, quantidade, endereço.                    |
+| `TraceCollapsible`        | Um passo com detalhes (um Collapsible).                                            |
+| `TraceCollapsibleTrigger` | Envolve a `TraceLine` e abre os detalhes; uma seta depois dela gira ao abrir.      |
+| `TraceCollapsibleContent` | Os detalhes, recuados sob um fio.                                                  |
+
+## Estados
+
+<Canvas of={TraceStories.Statuses} />
+
+| Estado    | O que mostra                                                                             |
+| --------- | ---------------------------------------------------------------------------------------- |
+| (nenhum)  | Terminou.                                                                                |
+| `running` | Acontecendo agora: o título brilha.                                                      |
+| `pending` | Ainda vai acontecer: texto mais apagado (`ink-subtle`), que ainda passa no contraste AA. |
+| `error`   | Falhou: a linha na cor de perigo.                                                        |
+
+## Passo com link
+
+<Canvas of={TraceStories.LinkedStep} />
+
+## Passo com detalhes
+
+<Canvas of={TraceStories.CollapsibleStep} />
+
+## Acessibilidade
+
+- A cor e o brilho não bastam: o ícone e o título dizem o estado ("O envio de e-mail falhou").
+- Para anunciar um passo novo enquanto o agente trabalha, ponha o Trace dentro de uma região `aria-live="polite"`.
+- O brilho e a animação de abrir param com movimento reduzido no sistema.

@@ -1,6 +1,7 @@
 'use client'
 
-import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
+import { Radio as RadioPrimitive } from '@base-ui/react/radio'
+import { RadioGroup as RadioGroupPrimitive } from '@base-ui/react/radio-group'
 import * as React from 'react'
 
 import { focusRing } from './button.js'
@@ -11,12 +12,9 @@ import { cn } from './lib/cn.js'
  * options; Tab enters and leaves the group. Name the group with
  * `aria-labelledby` (a visible heading) or `aria-label`.
  */
-export function RadioGroup({
-  className,
-  ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Root>) {
+export function RadioGroup({ className, ...props }: RadioGroupPrimitive.Props) {
   return (
-    <RadioGroupPrimitive.Root
+    <RadioGroupPrimitive
       data-slot="radio-group"
       className={cn('grid gap-2', className)}
       {...props}
@@ -28,26 +26,26 @@ export function RadioGroup({
 export function RadioGroupItem({
   className,
   ...props
-}: React.ComponentProps<typeof RadioGroupPrimitive.Item>) {
+}: RadioPrimitive.Root.Props) {
   return (
-    <RadioGroupPrimitive.Item
+    <RadioPrimitive.Root
       data-slot="radio-group-item"
       className={cn(
         'border-line-strong text-season-accent grid size-4 shrink-0 cursor-pointer place-items-center rounded-full border transition-colors duration-150',
-        'data-[state=checked]:border-season-accent',
-        'disabled:cursor-not-allowed disabled:opacity-50',
+        'data-checked:border-season-accent',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-50',
         focusRing,
         className,
       )}
       {...props}
     >
-      <RadioGroupPrimitive.Indicator className="size-2 rounded-full bg-current" />
-    </RadioGroupPrimitive.Item>
+      <RadioPrimitive.Indicator className="size-2 rounded-full bg-current" />
+    </RadioPrimitive.Root>
   )
 }
 
 export type RadioCardProps = Omit<
-  React.ComponentProps<typeof RadioGroupPrimitive.Item>,
+  RadioPrimitive.Root.Props,
   'children' | 'title'
 > & {
   /** The option's name. */
@@ -70,13 +68,13 @@ export function RadioCard({
   ...props
 }: RadioCardProps) {
   return (
-    <RadioGroupPrimitive.Item
+    <RadioPrimitive.Root
       data-slot="radio-card"
       className={cn(
         'group/radio-card border-line-strong text-ink relative flex w-full cursor-pointer items-start gap-3 rounded-[var(--datum-radius-md)] border bg-transparent p-3 pr-9 text-left transition-[border-color,background-color] duration-150',
         'hover:bg-well',
-        'data-[state=checked]:border-season-accent data-[state=checked]:bg-season-accent/10',
-        'disabled:cursor-not-allowed disabled:opacity-50',
+        'data-checked:border-season-accent data-checked:bg-season-accent/10',
+        'data-disabled:cursor-not-allowed data-disabled:opacity-50',
         "[&_svg:not([class*='size-'])]:size-5",
         focusRing,
         className,
@@ -86,7 +84,7 @@ export function RadioCard({
       {icon && (
         <span
           aria-hidden="true"
-          className="text-ink-muted group-data-[state=checked]/radio-card:text-season-accent mt-0.5 shrink-0"
+          className="text-ink-muted group-data-checked/radio-card:text-season-accent mt-0.5 shrink-0"
         >
           {icon}
         </span>
@@ -101,10 +99,10 @@ export function RadioCard({
       </span>
       <span
         aria-hidden="true"
-        className="border-line-strong group-data-[state=checked]/radio-card:border-season-accent absolute top-3 right-3 grid size-4 place-items-center rounded-full border"
+        className="border-line-strong group-data-checked/radio-card:border-season-accent absolute top-3 right-3 grid size-4 place-items-center rounded-full border"
       >
-        <RadioGroupPrimitive.Indicator className="bg-season-accent size-2 rounded-full" />
+        <RadioPrimitive.Indicator className="bg-season-accent size-2 rounded-full" />
       </span>
-    </RadioGroupPrimitive.Item>
+    </RadioPrimitive.Root>
   )
 }

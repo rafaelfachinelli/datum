@@ -6,7 +6,7 @@ import * as ButtonStories from './Button.stories'
 
 # Button
 
-Dispara uma ação: enviar um formulário, baixar um arquivo, abrir um diálogo. Para navegar até outra página, use um link com a aparência de botão (`asChild`, mais abaixo).
+Dispara uma ação: enviar um formulário, baixar um arquivo, abrir um diálogo. Para navegar até outra página, use um link com a aparência de botão (`render`, mais abaixo).
 
 <Canvas of={ButtonStories.Primary} />
 
@@ -49,7 +49,7 @@ Os ícones herdam o tamanho de 16 px e o espaçamento. Ícone à esquerda refor�
 
 ## Como link
 
-Com `asChild`, o Button aplica o visual ao elemento filho, por exemplo um `<a>` ou o `Link` do Next.js. A semântica continua a de link: abre em nova aba, aparece no histórico, funciona sem JavaScript.
+Com `render`, o Button desenha outro elemento com o seu visual, por exemplo `render={<a href="…" />}` ou o `Link` do Next.js, junto com `nativeButton={false}`. A semântica continua a de link: abre em nova aba, aparece no histórico, funciona sem JavaScript.
 
 <Canvas of={ButtonStories.AsLink} />
 

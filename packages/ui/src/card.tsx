@@ -1,4 +1,5 @@
-import { Slot } from '@radix-ui/react-slot'
+import { mergeProps } from '@base-ui/react/merge-props'
+import { useRender } from '@base-ui/react/use-render'
 import * as React from 'react'
 
 import { cn } from './lib/cn.js'
@@ -34,25 +35,28 @@ export function CardHeader({
 }
 
 /**
- * The title, an `h3` by default. With `asChild`, it styles your own element
- * (for example an `h2`) so the heading level follows the page.
+ * The title, an `h3` by default. With `render` (render={<h2 />}), it styles your own element so the heading level
+ * follows the page.
  */
 export function CardTitle({
   className,
-  asChild = false,
+  render,
   ...props
-}: React.ComponentProps<'h3'> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : 'h3'
-  return (
-    <Comp
-      data-slot="card-title"
-      className={cn(
-        'font-display text-lg leading-tight font-semibold',
-        className,
-      )}
-      {...props}
-    />
-  )
+}: useRender.ComponentProps<'h3'>) {
+  return useRender({
+    defaultTagName: 'h3',
+    props: mergeProps<'h3'>(
+      {
+        className: cn(
+          'font-display text-lg leading-tight font-semibold',
+          className,
+        ),
+      },
+      props,
+    ),
+    render,
+    state: { slot: 'card-title' },
+  })
 }
 
 export function CardDescription({

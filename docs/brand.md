@@ -55,7 +55,7 @@ A drafting board: faint grid, dimension marks, corner registration ticks, monosp
 
 - Type: Archivo (display), IBM Plex Sans (text), IBM Plex Mono (annotations, labels, numbers).
 - Shapes: small radius (2 px), dashed and hairline borders, corner ticks on key surfaces.
-- Components: shadcn/ui (Radix) as the base, with this personality layer on top, never stock shadcn.
+- Components: shadcn/ui (Base UI) as the base, with this personality layer on top, never stock shadcn.
 - Name: the design system is called **Datum** (decided 2026-10-17). In technical drawing the datum is the reference every dimension is measured from; in Brazil it is also the geodetic reference ("datum SIRGAS 2000"), so it reads well in English and Portuguese. Always shown with the brand ("Datum, design system de Rafael Fachinelli"), since the word alone is common. "Blueprint" stays as the name of the visual direction; on its own it would clash with Palantir's well-known open source React UI toolkit. "Prancheta" was chosen first and dropped as too Brazil-only.
 - The "see inside" mode was dropped (Storybook already ships Measure and Outline tools).
 

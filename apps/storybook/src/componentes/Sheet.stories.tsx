@@ -25,11 +25,9 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: args => (
     <Sheet {...args}>
-      <SheetTrigger asChild>
-        <Button variant="outline">
-          <Filter />
-          Filtros
-        </Button>
+      <SheetTrigger render={<Button variant="outline" />}>
+        <Filter />
+        Filtros
       </SheetTrigger>
       <SheetContent closeLabel="Fechar">
         <SheetHeader>
@@ -46,8 +44,8 @@ export const Default: Story = {
         </div>
         <SheetFooter>
           <Button>Aplicar</Button>
-          <SheetClose asChild>
-            <Button variant="outline">Cancelar</Button>
+          <SheetClose render={<Button variant="outline" />}>
+            Cancelar
           </SheetClose>
         </SheetFooter>
       </SheetContent>
@@ -60,9 +58,7 @@ export const Open: Story = {
   render: args => (
     <div className="h-96">
       <Sheet {...args}>
-        <SheetTrigger asChild>
-          <Button variant="outline">Abrir</Button>
-        </SheetTrigger>
+        <SheetTrigger render={<Button variant="outline" />}>Abrir</SheetTrigger>
         <SheetContent closeLabel="Fechar">
           <SheetHeader>
             <SheetTitle>Detalhes</SheetTitle>
@@ -81,8 +77,8 @@ export const Sides: Story = {
     <div className="flex flex-wrap gap-2">
       {(['left', 'right', 'top', 'bottom'] as const).map(side => (
         <Sheet key={side}>
-          <SheetTrigger asChild>
-            <Button variant="outline">{side}</Button>
+          <SheetTrigger render={<Button variant="outline" />}>
+            {side}
           </SheetTrigger>
           <SheetContent side={side} closeLabel="Fechar">
             <SheetHeader>

@@ -21,12 +21,14 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const years = ['2026', '2025', '2024', '2023', '2022', '2021']
+// Each Select names its options (value → label): the trigger shows the label, not the value.
+const yearItems = Object.fromEntries(years.map(year => [year, year]))
 
 export const Default: Story = {
   render: args => (
     <div className="grid gap-2">
       <Label htmlFor="select-year">Ano</Label>
-      <Select {...args}>
+      <Select {...args} items={yearItems}>
         <SelectTrigger id="select-year">
           <SelectValue placeholder="Todos os anos" />
         </SelectTrigger>
@@ -47,7 +49,7 @@ export const Open: Story = {
   render: args => (
     <div className="grid h-72 content-start gap-2">
       <Label htmlFor="select-open">Ano</Label>
-      <Select {...args}>
+      <Select {...args} items={yearItems}>
         <SelectTrigger id="select-open">
           <SelectValue />
         </SelectTrigger>
@@ -67,7 +69,17 @@ export const Groups: Story = {
   render: args => (
     <div className="grid gap-2">
       <Label htmlFor="select-stack">Tecnologia</Label>
-      <Select {...args}>
+      <Select
+        {...args}
+        items={{
+          react: 'React',
+          next: 'Next.js',
+          angular: 'Angular',
+          spring: 'Spring Boot',
+          node: 'Node.js',
+          go: 'Go (em breve)',
+        }}
+      >
         <SelectTrigger id="select-stack">
           <SelectValue placeholder="Escolha uma tecnologia" />
         </SelectTrigger>
@@ -97,7 +109,11 @@ export const Small: Story = {
   render: args => (
     <div className="grid gap-2">
       <Label htmlFor="select-small">Ordenar por</Label>
-      <Select {...args} defaultValue="recent">
+      <Select
+        {...args}
+        defaultValue="recent"
+        items={{ recent: 'Mais recentes', name: 'Nome' }}
+      >
         <SelectTrigger id="select-small" size="sm">
           <SelectValue />
         </SelectTrigger>
@@ -114,7 +130,7 @@ export const Invalid: Story = {
   render: args => (
     <div className="grid gap-2">
       <Label htmlFor="select-invalid">Assunto</Label>
-      <Select {...args}>
+      <Select {...args} items={{ job: 'Vaga', project: 'Projeto' }}>
         <SelectTrigger id="select-invalid" aria-invalid>
           <SelectValue placeholder="Escolha um assunto" />
         </SelectTrigger>
@@ -132,7 +148,11 @@ export const Disabled: Story = {
   render: args => (
     <div className="grid gap-2">
       <Label htmlFor="select-disabled">Idioma</Label>
-      <Select {...args} defaultValue="pt">
+      <Select
+        {...args}
+        defaultValue="pt"
+        items={{ pt: 'Português', en: 'English' }}
+      >
         <SelectTrigger id="select-disabled">
           <SelectValue />
         </SelectTrigger>
