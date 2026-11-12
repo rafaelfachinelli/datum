@@ -6,7 +6,7 @@ import {
   TooltipTrigger,
 } from '@rafaelfachinelli/datum-ui'
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { Github, Linkedin, Mail, Share2 } from 'lucide-react'
+import { Code, Globe, Mail, Share2 } from 'lucide-react'
 
 const meta = {
   title: 'Componentes/Tooltip',
@@ -73,8 +73,8 @@ export const Group: Story = {
       <div className="flex gap-2">
         {(
           [
-            [Github, 'GitHub'],
-            [Linkedin, 'LinkedIn'],
+            [Code, 'Código'],
+            [Globe, 'Site'],
             [Mail, 'E-mail'],
           ] as const
         ).map(([Icon, label]) => (

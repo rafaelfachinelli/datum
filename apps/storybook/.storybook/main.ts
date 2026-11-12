@@ -20,6 +20,18 @@ const config: StorybookConfig = {
   viteFinal: config => ({
     ...config,
     plugins: [...(config.plugins ?? []), tailwindcss()],
+    build: {
+      ...config.build,
+      rollupOptions: {
+        ...config.build?.rollupOptions,
+        // Base UI marks its client components with "use client", which a static bundle has no use for: the warning
+        // is noise. Every other warning still shows.
+        onwarn(warning, warn) {
+          if (warning.code === 'MODULE_LEVEL_DIRECTIVE') return
+          warn(warning)
+        },
+      },
+    },
   }),
   staticDirs: ['../public'],
   core: {
