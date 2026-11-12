@@ -1,6 +1,6 @@
 /* Import after `tailwindcss` and `@rafaelfachinelli/datum-tokens/theme.css`. Tells Tailwind to
    generate the utilities the Datum components use. */
-@source "./";
+@source './';
 
 /* Entrance animations of the Datum overlays (Sheet). */
 @theme {
