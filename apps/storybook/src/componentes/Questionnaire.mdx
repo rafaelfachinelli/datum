@@ -1,0 +1,47 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as QuestionnaireStories from './Questionnaire.stories'
+
+<Meta of={QuestionnaireStories} />
+
+# Questionnaire
+
+Um formulário de uma pergunta por vez: escolhas em cartões, respostas curtas, voltar, pular e seguir. Bom para quando um agente precisa de algumas respostas antes de começar. Feito sobre a peça sem estilo `@shadcn/react/questionnaire`; é um `form` de verdade, e o `onSubmit` recebe as respostas.
+
+<Canvas of={QuestionnaireStories.Flow} />
+
+<Controls of={QuestionnaireStories.Flow} />
+
+## Partes
+
+| Parte                                                                                    | Papel                                                                                                                                |
+| ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `Questionnaire`                                                                          | O formulário. `items` lista as perguntas e as escolhas na ordem; `shortcuts` liga os atalhos (`letters` ou `numbers`).               |
+| `QuestionnaireProgress`                                                                  | Em que pergunta a pessoa está. `label` (nome da barra) e `format` (`(atual, total) => texto`) são obrigatórios, no idioma da página. |
+| `QuestionnaireItem`                                                                      | Uma pergunta (um `fieldset`); só a atual aparece. `required` impede pular; `multiple` troca as escolhas por caixas de seleção.       |
+| `QuestionnaireTitle`, `QuestionnaireDescription`                                         | A pergunta (a `legend`) e uma linha que ajuda a responder.                                                                           |
+| `QuestionnaireChoices`, `QuestionnaireChoice`, `QuestionnaireChoiceDescription`          | As escolhas, em cartões, com a tecla de atalho no canto.                                                                             |
+| `QuestionnaireInput`                                                                     | Uma resposta escrita curta.                                                                                                          |
+| `QuestionnaireError`                                                                     | Por que ainda não dá para seguir. O texto é obrigatório (`children`).                                                                |
+| `QuestionnaireActions`                                                                   | A fileira dos botões.                                                                                                                |
+| `QuestionnairePrevious`, `QuestionnaireSkip`, `QuestionnaireNext`, `QuestionnaireSubmit` | Voltar, pular, seguir e concluir. Cada um aparece só quando faz sentido. O texto é obrigatório (`children`).                         |
+
+## Sem atalhos
+
+<Canvas of={QuestionnaireStories.WithoutShortcuts} />
+
+## Teclado
+
+| Tecla                        | Faz                                                  |
+| ---------------------------- | ---------------------------------------------------- |
+| A, B, C (ou 1, 2, 3)         | Escolhe a opção, com `shortcuts` ligado.             |
+| Setas para cima e para baixo | Passa entre as escolhas.                             |
+| Enter                        | Segue para a próxima pergunta, ou conclui na última. |
+| Setas para os lados          | Volta ou segue, fora de um campo de texto.           |
+
+## Acessibilidade
+
+- Cada pergunta é um `fieldset` com `legend`; as escolhas são `input` de verdade, rádio ou caixa de seleção.
+- O progresso é uma `progressbar` com o texto de `format`; a troca de pergunta leva o foco para a nova.
+- O erro aparece como alerta e é ligado à pergunta por `aria-describedby`.
+- O Datum não escreve texto de interface: o progresso, o erro e os botões vêm de quem usa, no idioma da página.

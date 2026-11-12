@@ -1,0 +1,60 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as AttachmentStories from './Attachment.stories'
+
+<Meta of={AttachmentStories} />
+
+# Attachment
+
+Um arquivo numa conversa ou na caixa de mensagem: ícone ou prévia, nome, detalhes e ações. O estado (`state`) mostra onde o arquivo está, do rascunho ao envio terminado.
+
+<Canvas of={AttachmentStories.Default} />
+
+<Controls of={AttachmentStories.Default} />
+
+## Partes
+
+| Parte                   | Papel                                                                                                                              |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `Attachment`            | O cartão: `state`, `size` (`md`, `sm`, `xs`) e `orientation` (`horizontal`, `vertical`).                                           |
+| `AttachmentMedia`       | O ícone ou, com `variant="image"`, a prévia (apagada até o envio terminar).                                                        |
+| `AttachmentContent`     | Junta o título e a descrição.                                                                                                      |
+| `AttachmentTitle`       | O nome do arquivo, cortado com reticências. Brilha enquanto envia ou processa.                                                     |
+| `AttachmentDescription` | Tamanho, tipo ou o erro.                                                                                                           |
+| `AttachmentActions`     | As ações (remover, tentar de novo), por cima do gatilho.                                                                           |
+| `AttachmentAction`      | Um botão pequeno de ícone. Precisa de `aria-label`.                                                                                |
+| `AttachmentTrigger`     | Deixa o cartão inteiro clicável (abrir, ver). Um botão; com `render={<a href="…" />}`, um link. Precisa de um nome (`aria-label`). |
+| `AttachmentGroup`       | Uma fileira de anexos que rola para o lado, com as bordas em degradê.                                                              |
+
+## Estados
+
+<Canvas of={AttachmentStories.States} />
+
+| Estado       | O que mostra                                                   |
+| ------------ | -------------------------------------------------------------- |
+| `idle`       | Escolhido, ainda não enviado. Borda tracejada.                 |
+| `uploading`  | Enviando. Título brilhando; ponha o progresso na descrição.    |
+| `processing` | Enviado, sendo lido pelo agente. Título brilhando.             |
+| `error`      | Falhou. Borda e ícone na cor de perigo; o motivo na descrição. |
+| `done`       | Pronto.                                                        |
+
+## Imagem
+
+<Canvas of={AttachmentStories.ImagePreview} />
+
+## Vertical
+
+Para imagens, com a prévia grande em cima e as ações no canto.
+
+<Canvas of={AttachmentStories.Vertical} />
+
+## Grupo
+
+<Canvas of={AttachmentStories.Group} />
+
+## Acessibilidade
+
+- O estado não pode ficar só na cor ou no brilho: diga na descrição ("Enviando · 64%", "Maior que 100 MB").
+- Cada ação tem um nome que diz o arquivo ("Remover cardapio.pdf"), porque várias aparecem juntas.
+- Uma prévia de imagem com o nome logo ao lado leva `alt=""`; sem o nome, descreva a imagem.
+- O brilho para com movimento reduzido no sistema; o indicador de carregamento continua girando, mais devagar.

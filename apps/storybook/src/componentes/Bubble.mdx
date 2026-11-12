@@ -1,0 +1,50 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as BubbleStories from './Bubble.stories'
+
+<Meta of={BubbleStories} />
+
+# Bubble
+
+O balão de uma mensagem. Dentro de uma Message, segue o lado dela; sozinho, `align` escolhe o lado. Ocupa até 80% da largura, para a conversa respirar.
+
+<Canvas of={BubbleStories.Default} />
+
+<Controls of={BubbleStories.Default} />
+
+## Partes
+
+| Parte             | Papel                                                                                                                             |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `Bubble`          | O balão: `variant` e `align`.                                                                                                     |
+| `BubbleContent`   | O texto. Com `render={<a href="…" />}` ou um `button`, o balão inteiro vira link ou ação, com foco e hover.                       |
+| `BubbleReactions` | Reações presas num canto do balão (`side`: `top` ou `bottom`; `align`: `start` ou `end`). O anel tem a cor do fundo da prancheta. |
+| `BubbleGroup`     | Balões seguidos do mesmo autor.                                                                                                   |
+
+## Variantes
+
+<Canvas of={BubbleStories.Variants} />
+
+| Variante    | Quando usar                                                          |
+| ----------- | -------------------------------------------------------------------- |
+| `accent`    | As mensagens de quem está lendo. Na cor da temporada.                |
+| `secondary` | As mensagens do outro lado: outra pessoa ou o agente.                |
+| `muted`     | Mensagens de sistema, menos importantes que a conversa.              |
+| `tinted`    | Um destaque leve, com um toque da temporada: uma dica, uma sugestão. |
+| `outline`   | Algo que ainda não é definitivo: rascunho, prévia, link.             |
+| `ghost`     | Respostas longas de um agente, sem balão, na largura toda.           |
+| `danger`    | Um erro: a mensagem não foi enviada, a ação falhou.                  |
+
+## Reações
+
+<Canvas of={BubbleStories.WithReactions} />
+
+## Como link
+
+<Canvas of={BubbleStories.AsLink} />
+
+## Acessibilidade
+
+- Todos os pares de texto e fundo passam no WCAG AA em todas as temporadas.
+- Um emoji de reação leva `role="img"` e um `aria-label` ("Comemorando"); um número ao lado diz quantas pessoas reagiram.
+- Um balão que é link ou botão ganha o anel de foco do Datum; o texto dele diz para onde vai.

@@ -1,0 +1,42 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as MessageStories from './Message.stories'
+
+<Meta of={MessageStories} />
+
+# Message
+
+Uma mensagem de uma conversa, com uma pessoa ou com um agente: o avatar, o conteúdo (um ou mais Bubble) e, se precisar, uma linha acima e outra abaixo. Só organiza o espaço; a cor fica com o Bubble.
+
+<Canvas of={MessageStories.FromThePerson} />
+
+<Controls of={MessageStories.FromThePerson} />
+
+## Partes
+
+| Parte            | Papel                                                                                                   |
+| ---------------- | ------------------------------------------------------------------------------------------------------- |
+| `Message`        | A linha da mensagem. `align="end"` põe à direita (quem está lendo); `start`, à esquerda (o outro lado). |
+| `MessageAvatar`  | A foto, as iniciais ou um ícone do autor, embaixo, rente ao último balão. Dê o tamanho (`size-8`).      |
+| `MessageContent` | Junta o cabeçalho, os balões e o rodapé.                                                                |
+| `MessageHeader`  | Uma linha acima: nome do autor, horário.                                                                |
+| `MessageFooter`  | Uma linha abaixo: status de entrega, ações.                                                             |
+| `MessageGroup`   | Várias mensagens seguidas do mesmo autor, mais próximas.                                                |
+
+## Do agente
+
+<Canvas of={MessageStories.FromTheAgent} />
+
+## Agrupadas
+
+<Canvas of={MessageStories.Grouped} />
+
+## Com cabeçalho e rodapé
+
+<Canvas of={MessageStories.WithHeaderAndFooter} />
+
+## Acessibilidade
+
+- O lado (`align`) e a cor não bastam para dizer quem falou: o nome do autor aparece no cabeçalho ou, se não aparecer na tela, em texto `sr-only`.
+- O avatar é decorativo quando o nome já está escrito; um ícone dentro dele leva `aria-hidden`.
+- Para uma conversa que recebe mensagens novas, use o MessageScroller: ele anuncia o que chega.

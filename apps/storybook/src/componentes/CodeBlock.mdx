@@ -1,0 +1,51 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks'
+
+import * as CodeBlockStories from './CodeBlock.stories'
+
+<Meta of={CodeBlockStories} />
+
+# CodeBlock
+
+Um bloco de código ou de saída de terminal, em fonte monoespaçada, com título, botão de copiar, números de linha e linhas marcadas. Não colore a sintaxe: um realce de sintaxe pesa no pacote, e o Datum fica leve. Quem precisar pode colorir as linhas antes e passar como `CodeBlockLine`.
+
+<Canvas of={CodeBlockStories.Plain} />
+
+<Controls of={CodeBlockStories.Plain} />
+
+## Partes
+
+| Parte                 | Papel                                                                                                                                         |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `CodeBlock`           | A caixa: `variant` (`default`, `danger`) e `size` (`md`, `sm`).                                                                               |
+| `CodeBlockHeader`     | Uma linha acima do código: título e ações.                                                                                                    |
+| `CodeBlockTitle`      | O nome do arquivo ou da linguagem, com um ícone opcional.                                                                                     |
+| `CodeBlockActions`    | Os botões. No cabeçalho, ficam no fim dele; direto no CodeBlock, flutuam no canto e aparecem no hover ou no foco (sempre, em telas de toque). |
+| `CodeBlockCopyButton` | Copia `value`. `label` e `copiedLabel` são obrigatórios: o nome do botão antes e depois de copiar, no idioma da página.                       |
+| `CodeBlockContent`    | O código. `lineNumbers` numera as linhas, `startLine` escolhe a primeira, `wrap` quebra linhas longas em vez de rolar para o lado.            |
+| `CodeBlockLine`       | Uma linha, marcada como `added`, `removed` ou `highlighted`.                                                                                  |
+| `CodeBlockFooter`     | Uma linha abaixo: uma nota, um link para a fonte.                                                                                             |
+
+## Com título e copiar
+
+<Canvas of={CodeBlockStories.WithHeaderAndCopy} />
+
+## Copiar flutuante
+
+<Canvas of={CodeBlockStories.FloatingCopy} />
+
+## Linhas marcadas
+
+<Canvas of={CodeBlockStories.ChangedLines} />
+
+## Erro
+
+Para um registro de erro ou a saída de um comando que falhou.
+
+<Canvas of={CodeBlockStories.Danger} />
+
+## Acessibilidade
+
+- O código recebe foco pelo teclado, para rolar com as setas; a caixa mostra o anel de foco.
+- Depois de copiar, o botão troca de nome e uma região `aria-live` anuncia `copiedLabel`.
+- As marcas `+` e `−` das linhas não são selecionadas ao copiar, nem os números.
+- A cor não é a única pista de uma linha alterada: o `+` e o `−` dizem o mesmo.
