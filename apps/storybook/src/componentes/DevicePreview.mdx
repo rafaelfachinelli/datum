@@ -1,0 +1,57 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as DevicePreviewStories from './DevicePreview.stories'
+
+<Meta of={DevicePreviewStories} />
+
+# DevicePreview
+
+O mesmo conteúdo visto como celular ou como computador, com abas para trocar: a prévia de uma página, de um e-mail, de um artefato. O componente não sabe o que mostra; quase sempre é um iframe.
+
+<Canvas of={DevicePreviewStories.Default} />
+
+## Celular e computador
+
+- **Celular** (a primeira aba e o padrão): uma moldura de 390 × 844, no meio do espaço, com o conteúdo rolando dentro. Se o espaço for mais baixo ou mais estreito que a moldura, ela inteira diminui para caber; o conteúdo continua vendo 390 px de largura.
+- **Computador**: o conteúdo ocupa toda a largura e a altura disponíveis.
+
+O conteúdo continua montado na troca, então um iframe não recarrega.
+
+<Canvas of={DevicePreviewStories.Desktop} />
+
+## Uma ação na barra
+
+`toolbarEnd` põe ações no fim da barra, como abrir o conteúdo em outra aba.
+
+<Canvas of={DevicePreviewStories.WithToolbarEnd} />
+
+## Controlado
+
+Com `device` e `onDeviceChange`, a página guarda a escolha (para lembrar o último dispositivo, por exemplo). Sem eles, o componente guarda sozinho, começando por `defaultDevice`.
+
+<Canvas of={DevicePreviewStories.Controlled} />
+
+## Altura
+
+Com `height="fill"` (padrão), ocupa a altura do pai, que precisa ter uma (um flex, uma grade, uma altura fixa). Um número em px ou um comprimento CSS (`"70dvh"`) fixa a altura; a moldura do celular diminui para caber.
+
+<Canvas of={DevicePreviewStories.FixedHeight} />
+
+## Num espaço estreito
+
+Num painel lateral ou no próprio celular, a moldura diminui nas duas direções.
+
+<Canvas of={DevicePreviewStories.NarrowWindow} />
+
+## Conteúdo sem iframe
+
+Um iframe filho direto preenche a tela. Outro conteúdo rola dentro dela, mas as media queries dele continuam vendo a janela inteira: para o conteúdo responder ao dispositivo, use um iframe.
+
+<Canvas of={DevicePreviewStories.PlainContent} />
+
+## Acessibilidade
+
+- As abas seguem o padrão de abas do WAI-ARIA (`tablist`, `tab`, `tabpanel`): Tab entra no grupo, as setas trocam de aba, e a área da prévia é o painel da aba ativa.
+- O componente não tem texto próprio: `phoneLabel`, `desktopLabel` e `listLabel` (o nome do grupo de abas) vêm por props, no idioma da página.
+- Os ícones são decorativos; o nome da aba é o texto ao lado.
+- Dê um `title` ao iframe: é o nome que o leitor de tela anuncia.
