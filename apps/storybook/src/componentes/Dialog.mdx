@@ -1,0 +1,62 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as DialogStories from './Dialog.stories'
+
+<Meta of={DialogStories} />
+
+# Dialog
+
+Uma janela no meio da tela, por cima da página, para uma tarefa ou uma decisão que pede toda a atenção: renomear, confirmar uma exclusão, ver uma imagem maior. Feito sobre o Dialog do Base UI: prende o foco enquanto está aberto, fecha com Esc, com um clique no fundo ou com o botão de fechar, e devolve o foco ao botão que abriu.
+
+<Canvas of={DialogStories.Default} />
+
+## Partes
+
+| Parte                                              | Papel                                                                                                                                                                                           |
+| -------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Dialog`                                           | O estado: aberto ou fechado (`open`, `onOpenChange`, `defaultOpen`). `disableEscapeDismissal` e `disablePointerDismissal` impedem fechar com Esc e com um clique no fundo.                      |
+| `DialogTrigger`                                    | O botão que abre. Use `render={<Button />}`.                                                                                                                                                    |
+| `DialogContent`                                    | A janela, com o fundo escurecido e o botão de fechar. `size` escolhe a largura, `variant="media"` mostra uma imagem ou um vídeo; `closeLabel` é o nome do botão de fechar, no idioma da página. |
+| `DialogHeader`, `DialogTitle`, `DialogDescription` | Título (obrigatório para o leitor de tela anunciar a janela) e uma linha de contexto, opcional.                                                                                                 |
+| `DialogBody`                                       | O conteúdo. Se for mais alto que a tela, só ele rola, entre o título e as ações.                                                                                                                |
+| `DialogFooter`                                     | As ações. A principal fica por último, à direita; no celular elas empilham, com a principal em cima.                                                                                            |
+| `DialogClose`                                      | Transforma qualquer botão em "fechar" (`render={<Button />}`).                                                                                                                                  |
+
+## Tamanhos
+
+`sm` para uma confirmação curta, `md` (padrão) para um formulário, `lg` para uma tabela ou uma prévia larga, `full` para ocupar a janela inteira com uma margem. No celular, todos ocupam quase toda a largura, e o `full` ocupa a tela inteira.
+
+<Canvas of={DialogStories.Sizes} />
+
+## Com ações
+
+Uma escolha que precisa de resposta: com `disableEscapeDismissal` e `disablePointerDismissal`, só as ações fecham a janela. O botão de fechar continua lá, com o nome da ação que cancela (`closeLabel="Cancelar"`), porque o leitor de tela do celular precisa de um jeito de sair.
+
+<Canvas of={DialogStories.WithActions} />
+
+## Conteúdo longo
+
+O título e as ações ficam à vista e o corpo rola. Sem nada focável dentro, o corpo entra na ordem do Tab enquanto rola, para o teclado poder rolar.
+
+<Canvas of={DialogStories.LongContent} />
+
+## Mídia
+
+`variant="media"` mostra uma imagem, um vídeo ou um player incorporado sobre um fundo mais escuro, sem a superfície. A mídia cresce até o tamanho da tela e mantém a proporção; um iframe fica em 16:9. O `DialogHeader` vira a legenda embaixo; se a imagem dispensa legenda, esconda o título com `sr-only`, mas não o remova. Um clique ao lado da mídia cai no fundo e fecha.
+
+<Canvas of={DialogStories.Media} />
+
+<Canvas of={DialogStories.MediaEmbed} />
+
+## Acessibilidade
+
+- O título dá nome à janela (`aria-labelledby`) e a descrição a explica (`aria-describedby`). Sempre um `DialogTitle`.
+- O foco vai para dentro ao abrir, fica preso enquanto está aberto e volta ao botão que abriu ao fechar. O resto da página fica inerte.
+- O botão de fechar não tem texto próprio: o nome vem de `closeLabel`, no idioma da página.
+- A janela cresce e aparece; para quem prefere menos movimento, só aparece.
+
+## Boas práticas
+
+- Para tarefas curtas e decisões. Fluxos longos merecem página própria; detalhes ao lado da lista ficam melhor num [Sheet](?path=/docs/componentes-sheet--docs).
+- Um verbo nas ações ("Excluir", "Salvar"), não "Sim" e "Não".
+- Não abra uma janela sobre outra.

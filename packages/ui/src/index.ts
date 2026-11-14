@@ -69,6 +69,24 @@ export {
   CollapsibleContent,
   CollapsibleTrigger,
 } from './collapsible.js'
+export {
+  DevicePreview,
+  type DevicePreviewDevice,
+  type DevicePreviewProps,
+} from './device-preview.js'
+export {
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  type DialogContentProps,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  type DialogProps,
+  DialogTitle,
+  DialogTrigger,
+} from './dialog.js'
 export { Field, type FieldProps, useFieldControl } from './field.js'
 export { controlClass, Input } from './input.js'
 export { Label } from './label.js'
