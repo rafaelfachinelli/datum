@@ -171,6 +171,13 @@ export { Spinner, type SpinnerProps } from './spinner.js'
 export { Stat, type StatProps } from './stat.js'
 export { Textarea } from './textarea.js'
 export {
+  Toaster,
+  type ToasterProps,
+  type ToastOptions,
+  type ToastTone,
+  useToast,
+} from './toast.js'
+export {
   Tooltip,
   TooltipContent,
   TooltipProvider,

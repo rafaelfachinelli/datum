@@ -12,6 +12,10 @@ O que mudou em cada versão do Datum, da mais nova para a mais antiga. Os pacote
 | Componente, token ou variante nova                        | minor  |
 | Algo que quebra quem usa (prop removida, token renomeado) | major  |
 
+## 0.9.0 · 16 de novembro de 2026
+
+- **Toast:** uma mensagem curta que confirma o que acabou de acontecer ("Enviado", "Salvo") e some sozinha, embaixo da tela. O `Toaster` envolve a página uma vez e o `useToast` mostra a mensagem de qualquer lugar, em quatro tons: feito, neutro, atenção e falhou. O leitor de tela anuncia sem interromper, e com movimento reduzido ela não desliza. (PR_LINK)
+
 ## 0.8.0 · 13 de novembro de 2026
 
 - **Dialog:** uma janela no meio da tela, para uma tarefa ou uma decisão que pede atenção. Prende o foco, fecha com Esc e com um clique no fundo (dá para desligar os dois, para uma escolha que precisa de resposta) e vem em quatro tamanhos; o `full` ocupa a tela inteira no celular. O corpo rola entre o título e as ações, e a variante `media` mostra uma imagem, um vídeo ou um player sobre um fundo mais escuro, no tamanho da tela. ([#10](https://github.com/rafaelfachinelli/datum/pull/10))

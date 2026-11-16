@@ -1,7 +1,7 @@
 # Datum
 
 Audience: developers and AI agents working on the Datum design system.
-Status: version 0.8.0 (26 components); changelog on the Novidades page · Last updated: 2026-11-13
+Status: version 0.9.0 (27 components); changelog on the Novidades page · Last updated: 2026-11-16
 
 Datum is the design system of Rafael Fachinelli, in the **Blueprint** visual direction (the drafting board). In technical drawing, the datum is the reference every dimension is measured from; the design system plays the same role for color, space and type.
 
